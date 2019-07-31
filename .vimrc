@@ -34,6 +34,9 @@ let g:airline_theme='simple'
 " >> vim-fugitive
 set runtimepath^=~/.vim/bundle/vim-fugitive
 
+" >> vim-deus color
+colors deus
+
 set nocompatible
 syntax on
 set nowrap
@@ -51,7 +54,7 @@ set expandtab
 
 " Show special characters
 set list
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 
 " Always display the status line
 set laststatus=2
