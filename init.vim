@@ -23,7 +23,9 @@ set encoding=utf8
 
 " Show special characters
 set list
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
 set laststatus=2
 set cursorline
@@ -44,6 +46,16 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 
 " NERDTree configuration begin
 autocmd vimenter * NERDTree
+
+" Tweak for Markdown mode
+autocmd FileType markdown call s:markdown_mode_setup()
+function! s:markdown_mode_setup()
+  set wrap
+  set nonumber
+  set textwidth=80
+  set formatoptions+=t
+  CocDisable
+endfunction
 
 " >>> Set the file active
 au VimEnter * wincmd l
