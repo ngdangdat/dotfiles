@@ -9,6 +9,8 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ajmwagar/vim-deus'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'ctrlpvim/ctrlp.vim'
 " LSP support
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -68,7 +70,19 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " >>> Close if the last window is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " NERDTree configuration end
 
 let g:airline_theme='simple'
-colors deus
+let g:quantum_italics=1
+
+" CtrlP mapping
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = 'find %s -type f'
+
+colorscheme quantum
