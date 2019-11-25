@@ -1,4 +1,3 @@
-set termguicolors
 call plug#begin(stdpath('data') . '/plugged')
 
 " On-demand loading
@@ -11,11 +10,26 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ajmwagar/vim-deus'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+
+Plug 'google/vim-glaive'
 " LSP support
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
+
+" Auto format
+call glaive#Install()
+augroup autoformat_settings
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END
 
 " General vim configuration
 set nocompatible
@@ -70,6 +84,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " >>> Close if the last window is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -80,9 +95,22 @@ nmap <silent> gr <Plug>(coc-references)
 let g:airline_theme='simple'
 let g:quantum_italics=1
 
+" The silver searcher
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --column --vimgrep'
+endif
+
 " CtrlP mapping
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = 'find %s -type f'
+" let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+  \ --ignore .git
+  \ --ignore .svn
+  \ --ignore .hg
+  \ --ignore .DS_Store
+  \ --ignore "**/*.pyc"
+  \ --ignore **/target
+  \ -g ""'
 
 colorscheme quantum
