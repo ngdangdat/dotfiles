@@ -21,9 +21,10 @@ Plug 'google/vim-glaive'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
-
 " Auto format
 call glaive#Install()
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /home/blackbird/Apps/google-java-format-1.7.jar"
 augroup autoformat_settings
   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
