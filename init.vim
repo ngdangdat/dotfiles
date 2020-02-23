@@ -11,6 +11,7 @@ Plug 'ajmwagar/vim-deus'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
