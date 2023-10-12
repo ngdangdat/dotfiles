@@ -1,0 +1,11 @@
+- [x] tmux
+- [ ] alacritty (rust + cargo)
+- [ ] google chrome
+- [ ] 1password
+- [x] awscli
+- [ ] nordvpn
+- [x] neovim
+  - [x] configuration
+- [x] zsh + oh-my-zsh
+- [x] pyenv + virtualenvwrapper
+- [x] nvm
