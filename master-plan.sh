@@ -89,7 +89,7 @@ then
   # this cargo path only exists after Rust is installed
   CARGO_EXEC_PATH="$HOME/.cargo/bin/cargo"
   curl https://sh.rustup.rs -sSf | sh -s -- -y
-  sh -c "$CARGO_EXEC_PATH install alacritty"
+  bash -c "$CARGO_EXEC_PATH install alacritty" &> /dev/null
   cp ./apps/alacritty.yml $HOME/.alacritty.yml
 fi
 
