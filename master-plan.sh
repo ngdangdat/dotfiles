@@ -23,7 +23,7 @@ OMZ_PATH="$HOME/.oh-my-zsh"
 if [[ ! -d $OMZ_PATH ]];
 then
   print "install oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 2>/dev/null
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- -y 2>/dev/null
 else
   print "oh-my-zsh exists, skip"
 fi
