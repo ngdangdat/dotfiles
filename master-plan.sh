@@ -84,7 +84,7 @@ fi
 
 # install cargo and alacritty
 print "installing cargo and alacritty"
-if [[ ! -x $(which alacritty 2>/dev/null ]]
+if [[ ! -x $(which alacritty 2>/dev/null) ]]
 then
   # this cargo path only exists after Rust is installed
   CARGO_EXEC_PATH="$HOME/.cargo/bin/cargo"
