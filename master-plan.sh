@@ -7,7 +7,6 @@ set -o pipefail
 
 . ./utils.sh
 
-
 print() {
   echo "[x][$(date)] $@"
 }
@@ -73,7 +72,7 @@ then
 fi
 
 # awscli
-print installing awscliv2
+print "installing awscliv2"
 if [[ ! -x $(which aws 2>/dev/null) ]]
 then
   curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -81,5 +80,15 @@ then
   sudo bash ./aws/install --update > /dev/null
   rm -rf aws
   rm awscliv2.zip
+fi
+
+# install cargo and alacritty
+print "installing cargo and alacritty"
+if [[ ! -x $(which alacritty 2>/dev/null ]]
+then
+  # this cargo path only exists after Rust is installed
+  CARGO_EXEC_PATH="$HOME/.cargo/bin/cargo"
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
+  sh -c "$CARGO_EXEC_PATH install alacritty"
 fi
 
