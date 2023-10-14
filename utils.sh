@@ -7,7 +7,7 @@ getPackageManager() {
     osInfo[/etc/arch-release]=pacman
     osInfo[/etc/gentoo-release]=emerge
     osInfo[/etc/SuSE-release]=zypp
-    osInfo[/etc/debian_version]=apt
+    osInfo[/etc/debian_version]=apt-get
     osInfo[/etc/alpine-release]=apk
     for f in ${!osInfo[@]}
     do
@@ -28,6 +28,7 @@ installPackages() {
   PKGMGR_EXEC=$(which $PKGMGR)
   PKGFILE_PATH="./packages/${PKGMGR}.packages"
   PKGS=$(cat $PKGFILE_PATH | tr '\n' ' ')
+  sh -c "sudo -u root $PKGMGR_EXEC update"
   sh -c "sudo -u root $PKGMGR_EXEC install -y $PKGS" > /dev/null
 }
 
