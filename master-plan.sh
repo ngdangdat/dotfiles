@@ -20,10 +20,15 @@ installPackages
 
 # oh-my-zsh
 OMZ_PATH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM="$OMZ_PATH/custom"
+RESTART_SHELL=0
 if [[ ! -d $OMZ_PATH ]];
 then
   print "install oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- -y 2>/dev/null
+  RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -- -y >/dev/null 2>&1
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions >/dev/null 2>&1
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting >/dev/null 2>&1
+  RESTART_SHELL=1
 else
   print "oh-my-zsh exists, skip"
 fi
@@ -91,5 +96,11 @@ then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   bash -c "$CARGO_EXEC_PATH install alacritty" &> /dev/null
   cp ./apps/alacritty.yml $HOME/.alacritty.yml
+fi
+
+if [[ $RESTART_SHELL = 1 ]]
+then
+  print "Restarting shell . . ."
+  exec zsh -l
 fi
 
