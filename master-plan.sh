@@ -95,7 +95,7 @@ then
   CARGO_EXEC_PATH="$HOME/.cargo/bin/cargo"
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   bash -c "$CARGO_EXEC_PATH install alacritty" &> /dev/null
-  cp ./apps/alacritty.yml $HOME/.alacritty.yml
+  cp ./apps/alacritty.toml $HOME/.alacritty.toml
 fi
 
 if [[ $RESTART_SHELL = 1 ]]
