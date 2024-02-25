@@ -44,7 +44,7 @@ then
   curl -fLo "${NVIM_AUTOLOAD_PLUGIN_PATH}/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 mkdir -p $NVIM_CONFIG_PATH
-cp -r ./apps/nvim $NVIM_CONFIG_PATH
+cp -r ./apps/nvim/* $NVIM_CONFIG_PATH
 
 # tmux
 TMUX_PLUGINS_PATH="$HOME/.tmux/plugins"
