@@ -28,7 +28,7 @@ installPackages() {
   PKGMGR_EXEC=$(which $PKGMGR)
   PKGFILE_PATH="./packages/${PKGMGR}.packages"
   PKGS=$(cat $PKGFILE_PATH | tr '\n' ' ')
-  sh -c "sudo -u root $PKGMGR_EXEC update" >/dev/null
-  sh -c "sudo -u root $PKGMGR_EXEC install -y $PKGS" >/dev/null
+  sh -c "sudo -u root $PKGMGR_EXEC update"
+  sh -c "sudo -u root $PKGMGR_EXEC install -y $PKGS"
 }
 
