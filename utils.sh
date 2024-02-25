@@ -20,6 +20,8 @@ getPackageManager() {
 setupRepositories() {
   PKGMGR=$(getPackageManager)
   PKGMGR_EXEC=$(which $PKGMGR)
+
+  sh -c "sudo add-apt-repository -y ppa:neovim-ppa/unstable"
 }
 
 # install packages
