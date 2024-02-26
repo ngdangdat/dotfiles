@@ -36,8 +36,11 @@ cp ./apps/zshrc "$HOME/.zshrc"
 # Neovim
 NVIM_AUTOLOAD_PLUGIN_PATH="$HOME/.local/share/nvim/site/autoload"
 NVIM_CONFIG_PATH="$HOME/.config/nvim"
+NVIM_PACKER_PATH=~/.local/share/nvim/site/pack/packer/start/packer.nvim
 print "configuring neovim and set as default editor"
 
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $NVIM_PACKER_PATH
+ 
 mkdir -p $NVIM_AUTOLOAD_PLUGIN_PATH
 if [[ ! -f "${NVIM_AUTOLOAD_PLUGIN_PATH}/plug.vim" ]];
 then
