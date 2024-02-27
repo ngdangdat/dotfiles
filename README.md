@@ -6,7 +6,7 @@
 # Ubuntu/Debian
 <user>  ALL=(ALL) NOPASSWD:ALL
 ```
-- SSH setup (to be able to clone with SSH)
-  - TODO: How to do this securely?
 
+## Useful commands
+- [Install a Nerd fonts (recommend: `Ubuntu Mono Nerd Font`)](https://gist.github.com/matthewjberger/7dd7e079f282f8138a9dc3b045ebefa0)
 
