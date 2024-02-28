@@ -38,7 +38,7 @@ NVIM_CONFIG_PATH="$HOME/.config/nvim"
 NVIM_PACKER_PATH=~/.local/share/nvim/site/pack/packer/start/packer.nvim
 print "configuring neovim and set as default editor"
 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim $NVIM_PACKER_PATH 2>&1 || print "skip installing packer for nvim"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $NVIM_PACKER_PATH >/dev/null 2>&1 || print "skip installing packer for nvim"
  
 mkdir -p $NVIM_CONFIG_PATH
 cp -r ./apps/nvim/* $NVIM_CONFIG_PATH
