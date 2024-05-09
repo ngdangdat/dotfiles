@@ -2,6 +2,10 @@
 size = 14.0
 normal = { family = "Ubuntu Mono Nerd Font", style = "Regular" }
 
+[window]
+opacity = 0.85
+decorations = 'None'
+
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
 key = "F11"
