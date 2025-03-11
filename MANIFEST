@@ -1,0 +1,4 @@
+#operation|argument_1|argument_2
+symlink|.emacs.rc|
+symlink|.emacs|
+symlink|.emacs.custom.el|
