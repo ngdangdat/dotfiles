@@ -1,5 +1,4 @@
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (defvar rc/package-contents-refreshed nil)
 
