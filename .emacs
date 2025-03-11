@@ -11,6 +11,14 @@
       `(("." . ,(no-littering-expand-var-file-name "backup/"))))
 
 (setq inhibit-startup-screen 1)
+(setq-default indent-tabs-mode nil)
+
+;;; ido
+(rc/require 'ido-completing-read+)
+(require 'ido-completing-read+)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
 
 ;;; Appearance
 (load-theme 'wombat t)
