@@ -1,0 +1,21 @@
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c d") 'org-roam-dailies-capture-today)
+
+;; org roam
+(setq org-roam-directory "~/Dropbox/org/roam")
+(setq org-roam-dailies-directory "daily/")
+(setq org-roam-dailies-capture-templates
+    '(("d" "default" entry
+       "* %?"
+       :target (file+head "%<%Y-%m-%d>.org"
+                          "#+title: %<%Y-%m-%d>\n")))))
+
+;; set org folder, probably in Dropbox folder
+(setq org-agenda-files (list "~/Dropbox/org/agendas/"))
+(setq org-default-notes-file  "~/Dropbox/org/notes/uncategorized.org")
+(setq org-export-backends '(md))
+
+;; statuses
+(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE")))

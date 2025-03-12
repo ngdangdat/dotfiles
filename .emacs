@@ -2,6 +2,7 @@
 (package-initialize)
 
 (load "~/.emacs.rc/rc.el")
+(load "~/.emacs.rc/org-mode-rc.el")
 
 ;;; To tell emacs to not litter
 (rc/require 'no-littering)
@@ -11,6 +12,7 @@
       `(("." . ,(no-littering-expand-var-file-name "backup/"))))
 
 (rc/require 'org)
+(rc/require 'org-roam)
 (rc/require 'lsp-mode)
 ;; programming languages
 (rc/require
@@ -18,6 +20,8 @@
  'python-mode
  'typescript-mode
  'js2-mode)
+(load-file "~/.emacs.rc/lsp-rc.el")
+
 (setq inhibit-startup-screen 1)
 (setq display-line-numbers-type 'relative)
 (setq-default indent-tabs-mode nil)
