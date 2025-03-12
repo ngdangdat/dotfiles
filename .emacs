@@ -10,7 +10,16 @@
 (setq backup-directory-alist
       `(("." . ,(no-littering-expand-var-file-name "backup/"))))
 
+(rc/require 'org)
+(rc/require 'lsp-mode)
+;; programming languages
+(rc/require
+ 'go-mode
+ 'python-mode
+ 'typescript-mode
+ 'js2-mode)
 (setq inhibit-startup-screen 1)
+(setq display-line-numbers-type 'relative)
 (setq-default indent-tabs-mode nil)
 
 ;;; ido
@@ -30,5 +39,7 @@
 (column-number-mode 1)
 (global-display-line-numbers-mode)
 (global-whitespace-mode)
+(transient-mark-mode)
+
 
 (load-file custom-file)

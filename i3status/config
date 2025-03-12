@@ -13,6 +13,7 @@ order += "wireless wlp0s20f3"
 order += "ethernet eth0"
 order += "battery 0"
 order += "cpu_temperature 0"
+order += "cpu_temperature 1"
 order += "memory"
 order += "load"
 order += "tztime local"
@@ -68,6 +69,11 @@ load {
 cpu_temperature 0 {
     format = "T: %degrees °C"
     path = "/sys/devices/platform/coretemp.0/hwmon/hwmon8/temp1_input"
+}
+
+cpu_temperature 1 {
+    format = "T: %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon9/temp1_input"
 }
 
 memory {

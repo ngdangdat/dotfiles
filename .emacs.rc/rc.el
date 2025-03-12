@@ -8,7 +8,7 @@
     (package-refresh-contents)))
 
 (defun rc/require-one-package (package)
-  (when (not rc/package-contents-refreshed)
+  (when (not (package-installed-p package))
     (rc/package-refresh-contents-once)
     (package-install package)))
 

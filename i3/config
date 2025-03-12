@@ -23,6 +23,8 @@ font pango:UbuntuMonoNerdFont 14
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 exec --no-startup-id feh --bg-fill /home/ndd/Pictures/penger_invasion.jpg
+exec --no-startup-id ibus-daemon -drx
+
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -111,16 +113,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1:cmd"
+set $ws2 "2:bro"
+set $ws3 "3:not"
+set $ws4 "4:msg"
+set $ws5 "5:aif"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# apps started on each ws
+exec --no-startup-id i3-msg "workspace 1:cmd; exec /usr/local/bin/alacritty"
+exec --no-startup-id sh -c "sleep 1; i3-msg 'workspace 2:bro; exec /usr/bin/google-chrome-stable'"
+exec --no-startup-id sh -c "sleep 3; i3-msg 'workspace 3:not; exec /usr/local/bin/obsidian'"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -155,32 +162,34 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
+# ndd custom binding keys
 bindsym Control+Mod1+q exec --no-startup-id "i3lock"
 bindsym $mod+r mode "resize"
-bindsym $mod+d exec --no-startup-id "rofi -show run" 
+bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym Control+Shift+4 exec --no-startup-id "flameshot gui" 
 
 # class                 border  bground text    indicator child_border
 client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
@@ -207,4 +216,5 @@ bar {
     binding_mode       #b691d3 #A07CBC #FFFFFF
   }
   status_command i3status
+  strip_workspace_numbers yes
 }
