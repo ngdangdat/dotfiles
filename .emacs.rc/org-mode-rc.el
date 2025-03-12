@@ -14,7 +14,7 @@
 
 ;; set org folder, probably in Dropbox
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
-(setq org-default-notes-file  "~/Dropbox/org/notes/rambling.org")
+(setq org-default-notes-file  "~/Dropbox/org/rambling.org")
 (setq org-export-backends '(md))
 
 ;; statuses
