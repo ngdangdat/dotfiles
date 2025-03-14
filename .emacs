@@ -41,6 +41,7 @@
 (global-display-line-numbers-mode)
 (global-whitespace-mode)
 (transient-mark-mode)
+(global-visual-line-mode)
 
 ;; ===================================
 ;; PATH & ENVIRONMENT
