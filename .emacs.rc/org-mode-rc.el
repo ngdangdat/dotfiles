@@ -1,8 +1,11 @@
+(require 'org)
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-capture-today)
 
+(add-to-list 'org-modules 'org-habit)
 ;; org roam
 (setq org-roam-directory "~/Dropbox/org/roam")
 (setq org-roam-dailies-directory "daily/")
@@ -31,8 +34,3 @@
          "* TODO %? :work:avz:\n SCHEDULED: %t\n")
       ("p" "PSN" entry (file "~/Dropbox/org/projects/psn.org")
          "* TODO %? :psn:\n SCHEDULED: %t\n" :empty-lines 1)))
-;; (setq org-capture-templates
-;;       '(("p" "Capture task" entry (file "~/Documents/Agenda/Tasks.org")
-;;          "* TODO %?\n  SCHEDULED: %t\n")
-;;         ("K" "Cliplink capture task" entry (file "~/Documents/Agenda/Tasks.org")
-;;          "* TODO %(org-cliplink-capture) \n  SCHEDULED: %t\n" :empty-lines 1)))

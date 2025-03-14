@@ -76,7 +76,6 @@
 ;; Python environment
 (rc/require 'pyenv-mode)
 (require 'pyvenv)
-(pyenv-mode)
 
 ;; LSP (Language Server Protocol)
 (rc/require 'lsp-mode)
