@@ -27,12 +27,12 @@
 ;; capture
 (setq org-capture-templates
       '(("r" "RSL" entry (file "~/Dropbox/org/projects/rsl.org")
-         "* TODO %? :work:rsl:\n SCHEDULED: %t\n")
+         "* TODO %? :work:rsl:\nSCHEDULED: %t\n")
       ("a" "ADU" entry (file "~/Dropbox/org/projects/adu.org")
-         "* TODO %? :work:adu:\n SCHEDULED: %t\n")
+         "* TODO %? :work:adu:\nSCHEDULED: %t\n")
       ("d" "AVZ" entry (file "~/Dropbox/org/projects/avz.org")
-       "* TODO %? :work:avz:\n SCHEDULED: %t\n")
+       "* TODO %? :work:avz:\nSCHEDULED: %t\n")
       ("h" "HABIT" entry (file "~/Dropbox/org/projects/habit.org")
-         "* TODO %? :habit:\n SCHEDULED: %t\n")
+         "* TODO %? :habit:\nSCHEDULED: %t\n")
       ("p" "PSN" entry (file "~/Dropbox/org/projects/psn.org")
-         "* TODO %? :psn:\n SCHEDULED: %t\n" :empty-lines 1)))
+         "* TODO %? :psn:\nSCHEDULED: %t\n" :empty-lines 1)))
