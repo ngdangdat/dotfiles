@@ -1,39 +1,36 @@
+;;; init.el --- My Emacs configuration
+
+;;; Commentary:
+;;; Main configuration file for Emacs
+
+;;; Code:
+
+;; ===================================
+;; BASIC SETUP
+;; ===================================
 (setq custom-file "~/.emacs.custom.el")
 (package-initialize)
 
-(load "~/.emacs.rc/rc.el")
-(load "~/.emacs.rc/org-mode-rc.el")
+(add-to-list 'load-path "~/.emacs.local/")
 
-;;; To tell emacs to not litter
+;; Core functionality
+(load "~/.emacs.rc/rc.el")  ;; Custom require function
+
+;; Tell Emacs not to litter the filesystem
 (rc/require 'no-littering)
 (setq auto-save-file-name-transforms
       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 (setq backup-directory-alist
       `(("." . ,(no-littering-expand-var-file-name "backup/"))))
 
-(rc/require 'org)
-(rc/require 'org-roam)
-(rc/require 'lsp-mode)
-;; programming languages
-(rc/require
- 'go-mode
- 'python-mode
- 'typescript-mode
- 'js2-mode)
-(load-file "~/.emacs.rc/lsp-rc.el")
-
+;; Basic interface settings
 (setq inhibit-startup-screen 1)
 (setq display-line-numbers-type 'relative)
 (setq-default indent-tabs-mode nil)
 
-;;; ido
-(rc/require 'ido-completing-read+)
-(require 'ido-completing-read+)
-(ido-mode 1)
-(ido-everywhere 1)
-(ido-ubiquitous-mode 1)
-
-;;; Appearance
+;; ===================================
+;; APPEARANCE
+;; ===================================
 (load-theme 'wombat t)
 (add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
 (tool-bar-mode 0)
@@ -45,5 +42,67 @@
 (global-whitespace-mode)
 (transient-mark-mode)
 
+;; ===================================
+;; PATH & ENVIRONMENT
+;; ===================================
+;; Set up pyenv paths
+(setq exec-path (append exec-path (list (expand-file-name "~/.pyenv/bin")
+                                        (expand-file-name "~/.pyenv/shims"))))
 
-(load-file custom-file)
+(setenv "PATH" (concat (expand-file-name "~/.pyenv/bin") ":"
+                       (expand-file-name "~/.pyenv/shims") ":"
+                       (getenv "PATH")))
+(setenv "WORKON_HOME" "~/.pyenvs")
+;; ===================================
+;; COMPLETION FRAMEWORK
+;; ===================================
+;; IDO mode setup
+(rc/require 'ido-completing-read+)
+(require 'ido-completing-read+)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+
+;; ===================================
+;; DEVELOPMENT TOOLS
+;; ===================================
+;; Project management
+(rc/require 'projectile)
+(projectile-mode)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-completion-system 'ido)
+
+;; Python environment
+(rc/require 'pyenv-mode)
+(require 'pyvenv)
+(pyenv-mode)
+
+;; LSP (Language Server Protocol)
+(rc/require 'lsp-mode)
+(load-file "~/.emacs.rc/lsp-rc.el")
+
+;; Programming languages
+(rc/require
+ 'go-mode
+ 'python-mode
+ 'lsp-pyright
+ 'typescript-mode
+ 'js2-mode)
+
+;; ===================================
+;; ORGANIZATION TOOLS
+;; ===================================
+;; Org mode
+(rc/require 'org)
+(load "~/.emacs.rc/org-mode-rc.el")
+
+;; Org-roam (notes management)
+(rc/require 'org-roam)
+
+;; ===================================
+;; LOAD CUSTOM FILE
+;; ===================================
+(when (file-exists-p custom-file)
+  (load-file custom-file))
+
+;;; init.el ends here

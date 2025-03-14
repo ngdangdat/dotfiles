@@ -3,9 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(misterioso))
  '(package-selected-packages
-   '(javascript-mode typescript-mode python-mode no-littering lsp-mode ido-completing-read+ go-mode)))
+   '(pyenv typescript-mode python-mode pyenv-mode projectile org-roam no-littering lsp-pyright js2-mode ido-completing-read+ go-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

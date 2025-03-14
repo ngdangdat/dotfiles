@@ -115,9 +115,9 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:cmd"
 set $ws2 "2:bro"
-set $ws3 "3:not"
-set $ws4 "4:msg"
-set $ws5 "5:aif"
+set $ws3 "3:msg"
+set $ws4 "4:aif"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -126,8 +126,8 @@ set $ws10 "10"
 
 # apps started on each ws
 exec --no-startup-id i3-msg "workspace 1:cmd; exec /usr/local/bin/alacritty"
+exec --no-startup-id i3-msg "workspace 1:cmd; exec /usr/bin/emacs"
 exec --no-startup-id sh -c "sleep 1; i3-msg 'workspace 2:bro; exec /usr/bin/google-chrome-stable'"
-exec --no-startup-id sh -c "sleep 3; i3-msg 'workspace 3:not; exec /usr/local/bin/obsidian'"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

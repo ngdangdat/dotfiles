@@ -2,6 +2,7 @@
 symlink|.emacs.rc|
 symlink|.emacs|
 symlink|.emacs.custom.el|
+symlink|.emacs.local|
 symlink|i3|.config
 symlink|i3status|.config
 symlink|.tmux.conf|

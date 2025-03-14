@@ -2,7 +2,10 @@
 (autoload 'lsp "lsp-mode" nil t)
 
 ;; Add hooks to start LSP automatically in these modes
-(add-hook 'python-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'python-mode-hook #'(lambda()
+                                (require 'lsp-pyright)
+                                (lsp)))
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'typescript-mode-hook #'lsp)
 
