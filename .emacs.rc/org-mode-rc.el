@@ -1,5 +1,9 @@
 (require 'org)
 
+(add-hook 'org-mode-hook (lambda ()
+                           (setq-local whitespace-style nil)
+                           (whitespace-mode -1)))
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
