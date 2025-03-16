@@ -9,20 +9,12 @@ order += "disk /home"
 order += "run_watch DHCP"
 order += "run_watch VPNC"
 order += "path_exists VPN"
-order += "wireless wlp0s20f3"
 order += "ethernet eth0"
 order += "battery 0"
 order += "cpu_temperature 0"
-order += "cpu_temperature 1"
 order += "memory"
 order += "load"
 order += "tztime local"
-order += "tztime berlin"
-
-wireless wlp0s20f3 {
-    format_up = "%quality`@`%essid(%ip)"
-    format_down = "W: down"
-}
 
 ethernet eth0 {
     format_up = "E: %ip (%speed)"
@@ -68,12 +60,7 @@ load {
 
 cpu_temperature 0 {
     format = "T: %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon8/temp1_input"
-}
-
-cpu_temperature 1 {
-    format = "T: %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon9/temp1_input"
+    path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 memory {
