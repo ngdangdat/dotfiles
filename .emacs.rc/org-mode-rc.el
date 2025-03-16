@@ -8,6 +8,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-capture-today)
+(global-set-key (kbd "C-c i") 'org-insert-structure-template)
 
 (add-to-list 'org-modules 'org-habit)
 ;; org roam
