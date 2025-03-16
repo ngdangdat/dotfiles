@@ -73,6 +73,9 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-completion-system 'ido)
 
+;; WIP fuzzy finder
+(require 'frgrep)
+
 ;; Python environment
 (rc/require 'pyenv-mode)
 (require 'pyvenv)
