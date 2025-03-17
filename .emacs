@@ -40,8 +40,10 @@
 (column-number-mode 1)
 (global-display-line-numbers-mode)
 (global-whitespace-mode)
+(setq whitespace-line-column 120)
 (transient-mark-mode)
 (global-visual-line-mode)
+(global-set-key (kbd "M-s M-s") 'replace-string)
 
 ;; ===================================
 ;; PATH & ENVIRONMENT
@@ -82,6 +84,9 @@
 
 ;; LSP (Language Server Protocol)
 (rc/require 'lsp-mode)
+(rc/require 'lsp-ui)
+(rc/require 'company)
+;; (push 'company-lsp company-backends)
 (load-file "~/.emacs.rc/lsp-rc.el")
 
 ;; Programming languages

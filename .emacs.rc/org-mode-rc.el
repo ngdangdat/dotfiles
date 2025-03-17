@@ -15,11 +15,15 @@
 (setq org-roam-directory "~/Dropbox/org/roam")
 (setq org-roam-dailies-directory "daily/")
 (setq org-roam-dailies-capture-templates
-    '(("d" "default" entry
-       "* TODO %? :daily:\nSCHEDULED: %t\n"
-       :empty-lines 1
+    '(("i" "init" entry
+       "* TODO Plan %<%Y-%m-%d> %? :daily:\nSCHEDULED: %t\n"
        :target (file+head "%<%Y-%m-%d>.org"
-                          "#+title: %<%Y-%m-%d>\n"))))
+                          "#+title: %<%Y-%m-%d>\n")
+       :empty-lines 1)
+      ("r" "record" entry
+       "* DONE %? :daily:\nSCHEDULED: <%<%Y-%m-%d %a %H:%M>>\n"
+       :target (file "%<%Y-%m-%d>.org")
+       :empty-lines 1)))
 
 ;; set org folder, probably in Dropbox
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
@@ -33,11 +37,11 @@
 (setq org-capture-templates
       '(("r" "RSL" entry (file "~/Dropbox/org/projects/rsl.org")
          "* TODO %? :work:rsl:\nSCHEDULED: %t\n")
-      ("a" "ADU" entry (file "~/Dropbox/org/projects/adu.org")
+        ("a" "ADU" entry (file "~/Dropbox/org/projects/adu.org")
          "* TODO %? :work:adu:\nSCHEDULED: %t\n")
-      ("d" "AVZ" entry (file "~/Dropbox/org/projects/avz.org")
-       "* TODO %? :work:avz:\nSCHEDULED: %t\n")
-      ("h" "HABIT" entry (file "~/Dropbox/org/projects/habit.org")
+        ("d" "AVZ" entry (file "~/Dropbox/org/projects/avz.org")
+         "* TODO %? :work:avz:\nSCHEDULED: %t\n")
+        ("h" "HABIT" entry (file "~/Dropbox/org/projects/habit.org")
          "* TODO %? :habit:\nSCHEDULED: %t\n")
-      ("p" "PSN" entry (file "~/Dropbox/org/projects/psn.org")
+        ("p" "PSN" entry (file "~/Dropbox/org/projects/psn.org")
          "* TODO %? :psn:\nSCHEDULED: %t\n" :empty-lines 1)))
