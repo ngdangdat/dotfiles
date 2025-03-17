@@ -31,7 +31,11 @@
 ;; ===================================
 ;; APPEARANCE
 ;; ===================================
-(load-theme 'wombat t)
+(add-to-list 'custom-theme-load-path "~/.emacs.themes/")
+(rc/require 'doom-modeline)
+(doom-modeline-mode 1)
+
+(load-theme 'monokai t)
 (add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
 (tool-bar-mode 0)
 (menu-bar-mode 0)
