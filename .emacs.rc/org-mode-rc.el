@@ -16,7 +16,7 @@
 (setq org-roam-dailies-directory "daily/")
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry
-       "* TODO %? :daily:\n SCHEDULE: %t\n"
+       "* TODO %? :daily:\nSCHEDULED: %t\n"
        :empty-lines 1
        :target (file+head "%<%Y-%m-%d>.org"
                           "#+title: %<%Y-%m-%d>\n"))))
