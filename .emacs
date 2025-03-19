@@ -31,11 +31,12 @@
 ;; ===================================
 ;; APPEARANCE
 ;; ===================================
-(add-to-list 'custom-theme-load-path "~/.emacs.themes/")
+(add-to-list 'custom-theme-load-path "~/.emacs.themes")
+(load-theme 'monokai t)
+
 (rc/require 'doom-modeline)
 (doom-modeline-mode 1)
 
-(load-theme 'monokai t)
 (add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -90,6 +91,7 @@
 (rc/require 'lsp-mode)
 (rc/require 'lsp-ui)
 (rc/require 'company)
+(require 'company-clang)
 ;; (push 'company-lsp company-backends)
 (load-file "~/.emacs.rc/lsp-rc.el")
 
@@ -106,15 +108,12 @@
 ;; ===================================
 ;; Org mode
 (rc/require 'org)
+(require 'org)
 (load "~/.emacs.rc/org-mode-rc.el")
-
-;; Org-roam (notes management)
-(rc/require 'org-roam)
 
 ;; ===================================
 ;; LOAD CUSTOM FILE
 ;; ===================================
 (when (file-exists-p custom-file)
   (load-file custom-file))
-
 ;;; init.el ends here
