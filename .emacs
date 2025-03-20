@@ -34,8 +34,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.themes")
 (rc/require 'doom-themes)
 (require 'doom-themes)
-(setq doom-theme 'doom-city-lights)
-(load-theme 'doom-1337 t)
+(setq doom-theme 'doom-tokyo-night)
+(load-theme doom-theme t)
 
 (rc/require 'doom-modeline)
 (doom-modeline-mode 1)
