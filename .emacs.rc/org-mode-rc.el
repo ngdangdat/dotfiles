@@ -17,6 +17,7 @@
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
 (define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
 
+(setq org-habit-show-habits-only-for-today t)
 (setq org-log-done 'time
       org-log-into-drawer t
       org-log-state-notes-insert-after-drawers nil)
@@ -47,7 +48,7 @@
                    (org-deadline-warning-days 365)))
           (todo "NEXT"
                 ((org-agenda-overriding-header "In Progress")
-                 (org-agenda-files `(,(expand-file-name "gtd/projects.org" org-directory)))))
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)))
           (todo "TODO"
                 ((org-agenda-overriding-header "Queued")
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))))
@@ -138,10 +139,10 @@
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
-         ,(concat "* TODO %? :INBOX:\n"
+         ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))
          ("r" "Repeat" entry (file ,(expand-file-name
                                      "gtd/projects/repeats.org"
                                      org-directory))
-         ,(concat "* TODO %? :REPEAT:\n"
+         ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))))
