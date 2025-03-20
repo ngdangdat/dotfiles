@@ -111,7 +111,6 @@
 ;; ===================================
 ;; Org mode
 (rc/require 'org)
-(require 'org)
 (load "~/.emacs.rc/org-mode-rc.el")
 
 ;; ===================================

@@ -16,8 +16,9 @@
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
 (define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
-
 (setq org-habit-show-habits-only-for-today t)
+(setq org-agenda-block-separator nil
+        org-agenda-start-with-log-mode t)
 (setq org-log-done 'time
       org-log-into-drawer t
       org-log-state-notes-insert-after-drawers nil)
@@ -44,12 +45,13 @@
                    ((org-agenda-overriding-header "Inbox")
                     (org-agenda-files `(,(expand-file-name "gtd/inbox.org" org-directory)))))
           (agenda ""
-                  ((org-agenda-span 'week)
+                  ((org-agenda-format-item " %i %-12:c%?-12t% s")
+                   (org-agenda-span 'week)
                    (org-deadline-warning-days 365)))
           (todo "NEXT"
                 ((org-agenda-overriding-header "In Progress")
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))
-          (todo "TODO"
+          (todo "TODO|HOLD"
                 ((org-agenda-overriding-header "Queued")
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))))
         ("d" "Done" todo "DONE"
@@ -135,7 +137,7 @@
   (interactive)
   (org-agenda nil "d"))
 
-(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)" "|" "DONE(d)")))
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
