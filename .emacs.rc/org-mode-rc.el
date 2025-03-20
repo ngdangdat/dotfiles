@@ -7,7 +7,6 @@
                            (whitespace-mode -1)))
 ; Set key map
 (global-set-key (kbd "C-c l") 'org-store-link)
-;; TODO: delete if not necessary | (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c i") 'org-insert-structure-template)
@@ -24,13 +23,21 @@
       org-log-state-notes-insert-after-drawers nil)
 (setq org-agenda-window-setup 'current-window)
 (setq org-agenda-restore-windows-after-quit t)
-(setq org-directory "~/.orgs")
+(setq org-directory "~/.orgs/")
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+(setq ndd/org-agenda-project-dir (concat org-directory "gtd/projects"))
+(setq ndd/org-agenda-project-agenda-files (directory-files-recursively ndd/org-agenda-project-dir "\\.org$"))
 (setq org-export-backends '(md))
 (setq org-columns-default-format
       "%40ITEM(Task) %Effort(EE){:} %CLOCKSUM(Time Spent) %SCHEDULED(Scheduled) %DEADLINE(Deadline)")
 (setq org-tag-alist '(("@work" . ?w)
                       ("@personal" . ?p)))
+(setq org-refile-use-outline-path 'file
+      org-outline-path-complete-in-steps nil)
+(setq org-refile-allow-creating-parent-nodes 'confirm
+      org-refile-targets
+      (mapcar (lambda (file) (cons file '(:level . 1)))
+              ndd/org-agenda-project-agenda-files))
 (setq org-agenda-custom-commands '((" " "Agenda"
                                     ((alltodo ""
                                               ((org-agenda-overriding-header "Inbox")
@@ -43,7 +50,7 @@
                                             (org-agenda-files `(,(expand-file-name "gtd/projects.org" org-directory)))))
                                      (todo "TODO"
                                            ((org-agenda-overriding-header "Queued")
-                                            (org-agenda-files `(,(expand-file-name "gtd/projects.org" org-directory)))))
+                                            (org-agenda-files ndd/org-agenda-project-agenda-files)))
                                      ))))
 
 (defvar ndd/org-current-effort "1:00"
@@ -121,13 +128,14 @@
   (org-agenda nil " ")
   )
 
-(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)" "|" "DONE(d)" "|" "CANCELLED(c)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")))
 
 (setq org-capture-templates
-      '(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
-         "* TODO %? :INBOX:\n/Entered on/ %U")))
-
-(setq org-refile-use-outline-path 'file
-      org-outline-path-complete-in-steps nil)
-(setq org-refile-allow-creating-parent-nodes 'confirm
-      org-refile-targets '(("projects.org" . (:level . 1))))
+      `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
+         ,(concat "* TODO %? :INBOX:\n"
+                  "/Entered on/ %U")
+         ("r" "Repeat" entry (file ,(expand-file-name
+                                     "gtd/projects/repeats.org"
+                                     org-directory))
+         ,(concat "* TODO %? :REPEAT:\n"
+                  "/Entered on/ %U"))))
