@@ -32,7 +32,10 @@
 ;; APPEARANCE
 ;; ===================================
 (add-to-list 'custom-theme-load-path "~/.emacs.themes")
-(load-theme 'monokai t)
+(rc/require 'doom-themes)
+(require 'doom-themes)
+(setq doom-theme 'doom-city-lights)
+(load-theme 'doom-1337 t)
 
 (rc/require 'doom-modeline)
 (doom-modeline-mode 1)

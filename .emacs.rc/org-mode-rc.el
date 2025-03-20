@@ -13,9 +13,12 @@
 (global-set-key (kbd "C-c i") 'org-insert-structure-template)
 (global-set-key (kbd "C-c <tab>") 'ndd/org-agenda)
 
+; Set key map for the org-agenda-mode-map
 (define-key org-agenda-mode-map (kbd "p") #'ndd/org-process-inbox)
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
+
+
 (setq org-log-done 'time
       org-log-into-drawer t
       org-log-state-notes-insert-after-drawers nil)
