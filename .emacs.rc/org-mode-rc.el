@@ -8,15 +8,14 @@
 ; Set key map
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c d") 'org-roam-dailies-capture-today)
-(global-set-key (kbd "C-c i") 'org-insert-structure-template)
 (global-set-key (kbd "C-c <tab>") 'ndd/org-agenda)
+(global-set-key (kbd "C-c SPC") 'ndd/org-agenda-done)
 
 ; Set key map for the org-agenda-mode-map
 (define-key org-agenda-mode-map (kbd "p") #'ndd/org-process-inbox)
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
-
+(define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
 
 (setq org-log-done 'time
       org-log-into-drawer t
@@ -38,20 +37,25 @@
       org-refile-targets
       (mapcar (lambda (file) (cons file '(:level . 1)))
               ndd/org-agenda-project-agenda-files))
-(setq org-agenda-custom-commands '((" " "Agenda"
-                                    ((alltodo ""
-                                              ((org-agenda-overriding-header "Inbox")
-                                               (org-agenda-files `(,(expand-file-name "gtd/inbox.org" org-directory)))))
-                                     (agenda ""
-                                             ((org-agenda-span 'week)
-                                              (org-deadline-warning-days 365)))
-                                     (todo "NEXT"
-                                           ((org-agenda-overriding-header "In Progress")
-                                            (org-agenda-files `(,(expand-file-name "gtd/projects.org" org-directory)))))
-                                     (todo "TODO"
-                                           ((org-agenda-overriding-header "Queued")
-                                            (org-agenda-files ndd/org-agenda-project-agenda-files)))
-                                     ))))
+(setq org-agenda-custom-commands
+      '((" " "Agenda"
+         ((alltodo ""
+                   ((org-agenda-overriding-header "Inbox")
+                    (org-agenda-files `(,(expand-file-name "gtd/inbox.org" org-directory)))))
+          (agenda ""
+                  ((org-agenda-span 'week)
+                   (org-deadline-warning-days 365)))
+          (todo "NEXT"
+                ((org-agenda-overriding-header "In Progress")
+                 (org-agenda-files `(,(expand-file-name "gtd/projects.org" org-directory)))))
+          (todo "TODO"
+                ((org-agenda-overriding-header "Queued")
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)))))
+        ("d" "Done" todo "DONE"
+         ((org-agenda-overriding-header "What Should I Be Proud Of Today?")
+          (org-agenda-span 'day)
+          (org-agenda-start-day nil)
+          (org-agenda-files ndd/org-agenda-project-agenda-files)))))
 
 (defvar ndd/org-current-effort "1:00"
   "Current effort of org item.")
@@ -125,15 +129,17 @@
 
 (defun ndd/org-agenda ()
   (interactive)
-  (org-agenda nil " ")
-  )
+  (org-agenda nil " "))
+(defun ndd/org-agenda-done ()
+  (interactive)
+  (org-agenda nil "d"))
 
 (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")))
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
          ,(concat "* TODO %? :INBOX:\n"
-                  "/Entered on/ %U")
+                  "/Entered on/ %U"))
          ("r" "Repeat" entry (file ,(expand-file-name
                                      "gtd/projects/repeats.org"
                                      org-directory))
