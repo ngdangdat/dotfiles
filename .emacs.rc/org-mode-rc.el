@@ -16,9 +16,11 @@
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
 (define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
+
+; Configurations
 (setq org-habit-show-habits-only-for-today t)
-(setq org-agenda-block-separator nil
-        org-agenda-start-with-log-mode t)
+(setq org-agenda-block-separator "----"
+      org-agenda-start-with-log-mode t)
 (setq org-log-done 'time
       org-log-into-drawer t
       org-log-state-notes-insert-after-drawers nil)
@@ -45,15 +47,20 @@
                    ((org-agenda-overriding-header "Inbox")
                     (org-agenda-files `(,(expand-file-name "gtd/inbox.org" org-directory)))))
           (agenda ""
-                  ((org-agenda-format-item " %i %-12:c%?-12t% s")
-                   (org-agenda-span 'week)
+                  ((org-agenda-span 'week)
                    (org-deadline-warning-days 365)))
           (todo "NEXT"
                 ((org-agenda-overriding-header "In Progress")
-                 (org-agenda-files ndd/org-agenda-project-agenda-files)))
+                 (org-agenda-files (cons
+                                    (expand-file-name "gtd/repeats.org" org-directory)
+                                    ndd/org-agenda-project-agenda-files))))
           (todo "TODO|HOLD"
                 ((org-agenda-overriding-header "Queued")
-                 (org-agenda-files ndd/org-agenda-project-agenda-files)))))
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)))
+          (todo "TODO"
+                ((org-agenda-overriding-header "Repeats")
+                 (org-agenda-files `(,(expand-file-name "gtd/repeats.org" org-directory)))))))
+        ;; check to see if it's being used
         ("d" "Done" todo "DONE"
          ((org-agenda-overriding-header "What Should I Be Proud Of Today?")
           (org-agenda-span 'day)
@@ -144,7 +151,7 @@
          ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))
          ("r" "Repeat" entry (file ,(expand-file-name
-                                     "gtd/projects/repeats.org"
+                                     "gtd/repeats.org"
                                      org-directory))
          ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))))
