@@ -1,3 +1,4 @@
+
 (require 'org)
 (require 'org-agenda)
 (add-to-list 'org-modules 'org-habit)
@@ -47,7 +48,8 @@
                    ((org-agenda-overriding-header "Inbox")
                     (org-agenda-files `(,(expand-file-name "gtd/inbox.org" org-directory)))))
           (agenda ""
-                  ((org-agenda-span 'week)
+                  ((org-agenda-span 'day)
+                   (org-agenda-start-day nil)
                    (org-deadline-warning-days 365)))
           (todo "NEXT"
                 ((org-agenda-overriding-header "In Progress")
