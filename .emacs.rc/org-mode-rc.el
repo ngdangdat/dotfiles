@@ -1,6 +1,6 @@
-
 (require 'org)
 (require 'org-agenda)
+(require 'org-clock-convenience)
 (add-to-list 'org-modules 'org-habit)
 
 (add-hook 'org-mode-hook (lambda ()
@@ -17,6 +17,14 @@
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
 (define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
+
+(defun ndd/org-agenda-clock-keymap ()
+  "Create keymap for org-clock-convenience in agenda mode."
+  (define-key org-agenda-mode-map (kbd "C-M-<up>") #'org-clock-convenience-timestamp-up)
+  (define-key org-agenda-mode-map (kbd "C-M-<down>") #'org-clock-convenience-timestamp-down)
+  (define-key org-agenda-mode-map (kbd "C-M-f") #'org-clock-convenience-fill-gap)
+  (define-key org-agenda-mode-map (kbd "C-M-b") #'org-clock-convenience-fill-gap-both))
+(add-hook 'org-agenda-mode-hook #'ndd/org-agenda-clock-keymap)
 
 ; Configurations
 (setq org-habit-show-habits-only-for-today t)

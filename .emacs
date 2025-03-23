@@ -110,7 +110,9 @@
 ;; ORGANIZATION TOOLS
 ;; ===================================
 ;; Org mode
-(rc/require 'org)
+(rc/require
+ 'org
+ 'org-clock-convenience)
 (load "~/.emacs.rc/org-mode-rc.el")
 
 ;; ===================================
