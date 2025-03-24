@@ -58,10 +58,14 @@
 ;; ===================================
 ;; Set up pyenv paths
 (setq exec-path (append exec-path (list (expand-file-name "~/.pyenv/bin")
-                                        (expand-file-name "~/.pyenv/shims"))))
+                                        (expand-file-name "~/.pyenv/shims")
+                                        (expand-file-name "/usr/local/go/bin")
+                                        (expand-file-name "~/go/bin"))))
 
 (setenv "PATH" (concat (expand-file-name "~/.pyenv/bin") ":"
                        (expand-file-name "~/.pyenv/shims") ":"
+                       (expand-file-name "/usr/local/go/bin") ":"
+                       (expand-file-name "~/go/bin") ":"
                        (getenv "PATH")))
 (setenv "WORKON_HOME" "~/.pyenvs")
 ;; ===================================

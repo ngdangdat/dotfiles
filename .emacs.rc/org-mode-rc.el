@@ -43,7 +43,8 @@
 (setq org-columns-default-format
       "%40ITEM(Task) %Effort(EE){:} %CLOCKSUM(Time Spent) %SCHEDULED(Scheduled) %DEADLINE(Deadline)")
 (setq org-tag-alist '(("@work" . ?w)
-                      ("@personal" . ?p)))
+                      ("@personal" . ?p)
+                      ("scheduled" . ?s))
 (setq org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm
