@@ -48,6 +48,7 @@
 (column-number-mode 1)
 (global-display-line-numbers-mode)
 (global-whitespace-mode)
+(setq-default tab-width 4)
 (setq whitespace-line-column 120)
 (transient-mark-mode)
 (global-visual-line-mode)
@@ -116,7 +117,9 @@
 ;; Org mode
 (rc/require
  'org
- 'org-clock-convenience)
+ 'org-clock-convenience
+ 'org-gcal
+ 'plstore)
 (load "~/.emacs.rc/org-mode-rc.el")
 
 ;; ===================================

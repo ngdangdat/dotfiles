@@ -17,13 +17,14 @@
 (define-key org-agenda-mode-map (kbd "i") #'org-agenda-clock-in)
 (define-key org-agenda-mode-map (kbd "I") #'ndd/clock-in-advance)
 (define-key org-mode-map (kbd "C-c i") #'org-insert-structure-template)
+(define-key org-agenda-mode-map (kbd "C-M-f") #'org-agenda-filter-by-tag)
 
 (defun ndd/org-agenda-clock-keymap ()
   "Create keymap for org-clock-convenience in agenda mode."
   (define-key org-agenda-mode-map (kbd "C-M-<up>") #'org-clock-convenience-timestamp-up)
   (define-key org-agenda-mode-map (kbd "C-M-<down>") #'org-clock-convenience-timestamp-down)
-  (define-key org-agenda-mode-map (kbd "C-M-f") #'org-clock-convenience-fill-gap)
-  (define-key org-agenda-mode-map (kbd "C-M-b") #'org-clock-convenience-fill-gap-both))
+  (define-key org-agenda-mode-map (kbd "C-M-g f") #'org-clock-convenience-fill-gap)
+  (define-key org-agenda-mode-map (kbd "C-M-g b") #'org-clock-convenience-fill-gap-both))
 (add-hook 'org-agenda-mode-hook #'ndd/org-agenda-clock-keymap)
 
 ; Configurations
@@ -40,11 +41,15 @@
 (setq ndd/org-agenda-project-dir (concat org-directory "gtd/projects"))
 (setq ndd/org-agenda-project-agenda-files (directory-files-recursively ndd/org-agenda-project-dir "\\.org$"))
 (setq org-export-backends '(md))
+;; Load org-gcal if configuration file exists
+(if (file-exists-p (expand-file-name "gcal.el" org-directory))
+    (load-file (expand-file-name "gcal.el" org-directory))
+  (message "configuration file gcal.el doesn't exist. Skip org-gcal"))
+
 (setq org-columns-default-format
       "%40ITEM(Task) %Effort(EE){:} %CLOCKSUM(Time Spent) %SCHEDULED(Scheduled) %DEADLINE(Deadline)")
 (setq org-tag-alist '(("@work" . ?w)
-                      ("@personal" . ?p)
-                      ("scheduled" . ?s))
+                      ("@personal" . ?p)))
 (setq org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm
