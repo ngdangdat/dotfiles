@@ -160,7 +160,7 @@
   (interactive)
   (org-agenda nil "d"))
 
-(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)" "|" "DONE(d)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)" "|" "DONE(d)" "CANCELLED(c)")))
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")

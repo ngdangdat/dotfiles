@@ -53,6 +53,7 @@
 (transient-mark-mode)
 (global-visual-line-mode)
 (global-set-key (kbd "M-s M-s") 'replace-string)
+(global-set-key (kbd "C-M-g") 'revert-buffer)
 
 ;; ===================================
 ;; PATH & ENVIRONMENT
@@ -68,7 +69,8 @@
                        (expand-file-name "/usr/local/go/bin") ":"
                        (expand-file-name "~/go/bin") ":"
                        (getenv "PATH")))
-(setenv "WORKON_HOME" "~/.pyenvs")
+(setenv "VIRTUALENVWRAPPER_PYTHON" "~/.pyenv/shims/python")
+(setenv "WORKON_HOME" "~/pyenvs")
 ;; ===================================
 ;; COMPLETION FRAMEWORK
 ;; ===================================
@@ -92,8 +94,9 @@
 (require 'frgrep)
 
 ;; Python environment
-(rc/require 'pyenv-mode)
+(rc/require 'pyenv-mode 'yasnippet)
 (require 'pyvenv)
+(require 'yasnippet)
 
 ;; LSP (Language Server Protocol)
 (rc/require 'lsp-mode)
@@ -121,6 +124,12 @@
  'org-gcal
  'plstore)
 (load "~/.emacs.rc/org-mode-rc.el")
+
+
+;; fzf
+(rc/require 'fzf)
+(require 'fzf)
+
 
 ;; ===================================
 ;; LOAD CUSTOM FILE
