@@ -8,6 +8,15 @@
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 (add-hook 'go-mode-hook #'lsp-deferred)
 
+;; Terraform
+(add-to-list 'lsp-language-id-configuration '(terraform-mode . "terraform"))
+
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-lsp" "-enable-log-file"))
+                  :major-modes '(terraform-mode)
+                  :server-id 'terraform-ls))
+(add-hook 'terraform-mode-hook #'lsp)
+
 ;; Python
 (add-hook 'python-mode-hook #'(lambda()
                                 (require 'lsp-pyright)

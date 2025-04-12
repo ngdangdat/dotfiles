@@ -103,6 +103,8 @@
 (rc/require 'lsp-ui)
 (rc/require 'company)
 (require 'company-clang)
+(require 'lsp-mode)
+(yas-global-mode)
 ;; (push 'company-lsp company-backends)
 (load-file "~/.emacs.rc/lsp-rc.el")
 
