@@ -1,5 +1,3 @@
-;; Customized require package
-(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 
@@ -10,12 +8,11 @@
     (setq rc/package-contents-refreshed t)
     (package-refresh-contents)))
 
-(defun rc/require-package (package)
+(defun rc/require-one-package (package)
   (when (not (package-installed-p package))
-	(rc/package-refresh-contents-once)
-	(package-install package)))
+    (rc/package-refresh-contents-once)
+    (package-install package)))
 
 (defun rc/require (&rest packages)
   (dolist (package packages)
-    (rc/require-package package)))
-
+    (rc/require-one-package package)))

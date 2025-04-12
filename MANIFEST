@@ -1,9 +1,9 @@
 #operation|argument_1|argument_2
 symlink|.emacs.rc|
 symlink|.emacs|
-symlink|.emacs.custom.el|
-symlink|.emacs.local|
-symlink|.emacs.themes|
+#symlink|.emacs.custom.el|
+#symlink|.emacs.local|
+#symlink|.emacs.themes|
 symlink|i3|.config
 symlink|i3status|.config
 symlink|.tmux.conf|
