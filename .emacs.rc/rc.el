@@ -18,4 +18,3 @@
 (defun rc/require (&rest packages)
   (dolist (package packages)
     (rc/require-package package)))
-
