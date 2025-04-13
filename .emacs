@@ -42,6 +42,7 @@
  'org
  'org-clock-convenience
  'org-roam
+ 'org-bullets
  ;; programming
  'exec-path-from-shell
  'python-mode
@@ -67,7 +68,7 @@
 (load-theme 'leuven-dark)
 (global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
-(setq doom-theme 'doom-bluloco-dark)
+(setq doom-theme 'doom-dracula)
 (load-theme doom-theme t)
 (setq doom-modeline-buffer-file-name-style 'truncate-nil)
 (setq doom-modeline-total-line-number t)

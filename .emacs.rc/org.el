@@ -1,5 +1,9 @@
 ;;; .org.el -*- lexical-binding: t; -*-
 (add-to-list 'org-modules 'org-habit)
+(add-hook 'org-mode-hook (lambda()
+                           (setq-local whitespace-style nil)
+                           (whitespace-mode 0)
+                           (org-bullets-mode 1)))
 
 ;; Configurations
 ;; setup org text file path
@@ -24,8 +28,8 @@
 (setq org-agenda-start-with-log-mode t)
 (setq org-tag-alist '(("@work" . ?w)
                       ("@personal" . ?p)))
-(setq org-agenda-window-setup 'current-window)
 (setq org-agenda-restore-windows-after-quit t)
+(setq org-hide-emphasis-markers t)
 
 (setq org-todo-keywords'((sequence
                           "TODO(t)"
