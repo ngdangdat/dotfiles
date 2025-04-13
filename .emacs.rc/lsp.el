@@ -8,3 +8,8 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 (add-hook 'go-mode-hook #'lsp-deferred)
+
+;; python
+(add-hook 'python-mode-hook #'(lambda()
+                                (require 'lsp-pyright)
+                                (lsp)))
