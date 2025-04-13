@@ -1,13 +1,12 @@
 ;;; .emacs -*- lexical-binding: t; -*-
 (setq custom-file "~/.emacs.custom.el")
 
-;; load extra files
+;; custom require, install packages if it's not installed and refresh once only
 (load "~/.emacs.rc/rc.el")
-;; (add-to-list 'load-path "")
 
 ;; define custom functions
 (defun ndd/custom-whitespace-mode-hook ()
-  "Disable whitespace mode for some file extensions"
+  "Customize whitespace mode for some file extensions"
   (let ((file-name (buffer-file-name)))
     (when file-name
       (when (or (string-match "\\.org$" file-name)
@@ -29,16 +28,32 @@
  'ivy
  'swiper
  'counsel
+ 'projectile
+ 'company
+ 'company-posframe
  ;; organize files
  'no-littering
- 'magit)
+ ;; appearance
+ 'doom-themes
+ ;; org-mode
+ 'org
+ 'org-clock-convenience
+ ;; programming
+ 'python-mode
+ 'go-mode
+ 'lsp-pyright
+ 'typescript-mode
+ 'js2-mode
+ 'lsp-mode
+ 'lsp-ui
+ )
 
-;; appearance
+;; appearence
 (add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
 (setq inhibit-startup-screen 1)
 (setq display-line-numbers-type 'relative)
 (setq whitespace-line-column 80)
-(setq indent-tabs-mode -1)
+(setq-default indent-tabs-mode nil)
 (transient-mark-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -46,7 +61,8 @@
 (load-theme 'leuven-dark)
 (global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
-
+(setq doom-theme 'doom-bluloco-dark)
+(load-theme doom-theme t)
 
 ;; no littering, emacs
 (eval-and-compile
@@ -63,9 +79,22 @@
 (setopt ivy-use-virtual-buffers t)
 (setopt ivy-use-selectable-prompt t)
 ;; swiper
-(keymap-global-set "C-s" #'swiper-isearch)
-(keymap-global-set "C-r" #'swiper-isearch-backward)
-(keymap-global-set "C-c C-r" #'ivy-resume)
+(keymap-set global-map "C-s" #'swiper-isearch)
+(keymap-set global-map "C-r" #'swiper-isearch-backward)
+(keymap-set global-map "C-c C-r" #'ivy-resume)
+;; projectile
+(projectile-mode)
+(setq projectile-completion-system 'ivy)
+(keymap-set projectile-mode-map "C-c p" projectile-command-map)
+
+;; org
+(require 'org)
+(require 'org-agenda)
+(require 'org-clock-convenience)
+(load-file "~/.emacs.rc/org.el")
+
+;; lsp
+
 
 ;; load custom file
 (when (file-exists-p custom-file)
