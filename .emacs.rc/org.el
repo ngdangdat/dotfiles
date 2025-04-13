@@ -3,8 +3,8 @@
 
 ;; Configurations
 ;; setup org text file path
-(setq org-directory "~/.orgs/")
-(setq ndd/org-agenda-project-dir (concat org-directory "gtd/projects"))
+(setq org-directory "~/.orgs/gtd/")
+(setq ndd/org-agenda-project-dir (concat org-directory "projects"))
 (setq ndd/org-agenda-project-agenda-files
       (directory-files-recursively ndd/org-agenda-project-dir "\\.org$"))
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
@@ -40,7 +40,7 @@
          ((alltodo ""
                    ((org-agenda-overriding-header "Inbox")
                     (org-agenda-files `(,(expand-file-name
-                                          "gtd/inbox.org"
+                                          "inbox.org"
                                           org-directory)))))
           (agenda ""
                   ((org-agenda-span 'day)
@@ -50,7 +50,7 @@
                 ((org-agenda-overriding-header "In Progress")
                  (org-agenda-files (cons
                                     (expand-file-name
-                                     "gtd/repeats.org"
+                                     "repeats.org"
                                      org-directory)
                                     ndd/org-agenda-project-agenda-files))))
           (todo "TODO|HOLD"
@@ -60,7 +60,7 @@
                 ((org-agenda-overriding-header "Repeats")
                  (org-agenda-files `(,(
                                        expand-file-name
-                                       "gtd/repeats.org"
+                                       "repeats.org"
                                        org-directory)))))))))
 
 ;; functions
@@ -106,6 +106,10 @@
            (end-of-line 1)
            (setq newhead (org-get-heading)))
          (org-agenda-change-all-lines newhead hdmarker))))
+(defun ndd/org-archive-done-tasks ()
+  "Archive all done tasks."
+  (interactive)
+  (org-map-entries 'org-archive-subtree "/DONE" 'file))
 
 (defun ndd/org-process-inbox ()
   "Process inbox in bulk"
@@ -128,7 +132,9 @@
                   (goto-char pos)
                   (let (org-loop-over-headlines-in-active-region)
                     (funcall 'ndd/org-agenda-process-inbox-item))
-                  (when (or (memq 'org-add-log-note (default-value 'post-command-hook))
+                  (when (or (memq
+                             'org-add-log-note
+                             (default-value 'post-command-hook))
                             (memq 'org-add-log-note post-command-hook))
                     (org-add-log-note))
                   (cl-incf processed))
@@ -161,6 +167,7 @@
 
 
 ;; map keys here
+;; map: org
 (keymap-set global-map "C-c l" 'org-store-link)
 (keymap-set global-map "C-c c" 'org-capture)
 (keymap-set global-map "C-c <tab>" 'ndd/org-agenda)
@@ -174,7 +181,19 @@
          ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))
          ("r" "Repeat" entry (file ,(expand-file-name
-                                     "gtd/repeats.org"
+                                     "repeats.org"
                                      org-directory))
          ,(concat "* TODO %?\n"
                   "/Entered on/ %U"))))
+
+
+;; org-roam
+(setq org-roam-directory "~/.orgs/roam/")
+;; org-roam: key map
+(org-roam-db-autosync-mode)
+(keymap-set global-map "C-c r l" #'org-roam-buffer-toggle)
+(keymap-set global-map "C-c r f" #'org-roam-node-find)
+(keymap-set global-map "C-c r g" #'org-roam-graph)
+(keymap-set global-map "C-c r i" #'org-roam-node-insert)
+(keymap-set global-map "C-c r c" #'org-roam-capture)
+(keymap-set global-map "C-c r j" #'org-roam-dailies-capture-today)

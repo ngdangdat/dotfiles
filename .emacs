@@ -41,6 +41,7 @@
  ;; org-mode
  'org
  'org-clock-convenience
+ 'org-roam
  ;; programming
  'exec-path-from-shell
  'python-mode
@@ -102,6 +103,7 @@
 (require 'org)
 (require 'org-agenda)
 (require 'org-clock-convenience)
+(require 'org-roam-graph)
 (load-file "~/.emacs.rc/org.el")
 
 ;; lsp
