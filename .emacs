@@ -68,7 +68,7 @@
 (load-theme 'leuven-dark)
 (global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-gruvbox)
 (load-theme doom-theme t)
 (setq doom-modeline-buffer-file-name-style 'truncate-nil)
 (setq doom-modeline-total-line-number t)
