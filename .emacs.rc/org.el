@@ -24,10 +24,15 @@
       (mapcar (lambda (file) (cons file '(:level . 1)))
               ndd/org-agenda-project-agenda-files))
 ;; chores
+(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t%-6e% s")
+                                 (todo . " %i %-12:c %-6e")
+                                 (tags . " %i %-12:c")
+                                 (search . " %i %-12:c")))
 (setq org-habit-show-habits-only-for-today t)
 (setq org-agenda-start-with-log-mode t)
 (setq org-tag-alist '(("@work" . ?w)
                       ("@personal" . ?p)))
+(setq org-agenda-window-setup 'current-window)
 (setq org-agenda-restore-windows-after-quit t)
 (setq org-hide-emphasis-markers t)
 
