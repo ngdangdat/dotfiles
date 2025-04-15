@@ -28,6 +28,12 @@
                                  (todo . " %i %-12:c %-6e")
                                  (tags . " %i %-12:c")
                                  (search . " %i %-12:c")))
+(setq
+ org-columns-default-format
+ (concat
+  "%40ITEM(Task) %Effort(EE){:} %CLOCKSUM(Time Spent) "
+  "%SCHEDULED(Scheduled) %DEADLINE(Deadline)"))
+
 (setq org-habit-show-habits-only-for-today t)
 (setq org-agenda-start-with-log-mode t)
 (setq org-tag-alist '(("@work" . ?w)
