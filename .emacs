@@ -47,6 +47,7 @@
  'org-roam
  'org-bullets
  ;; programming
+ 'magit
  'exec-path-from-shell
  'python-mode
  'go-mode
