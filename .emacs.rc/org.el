@@ -24,7 +24,7 @@
       (mapcar (lambda (file) (cons file '(:level . 1)))
               ndd/org-agenda-project-agenda-files))
 ;; chores
-(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t%-6e% s")
+(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
                                  (todo . " %i %-12:c %-6e")
                                  (tags . " %i %-12:c")
                                  (search . " %i %-12:c")))
@@ -44,8 +44,8 @@
 
 (setq org-todo-keywords'((sequence
                           "TODO(t)"
-                          "NEXT(n)"
                           "HOLD(h)"
+                          "NEXT(n)"
                           "|"
                           "DONE(d)"
                           "CANCELLED(c)")))
@@ -61,14 +61,14 @@
                   ((org-agenda-span 'day)
                    (org-agenda-start-day nil)
                    (org-deadline-warning-days 365)))
-          (todo "NEXT"
+          (todo "NEXT|HOLD"
                 ((org-agenda-overriding-header "In Progress")
                  (org-agenda-files (cons
                                     (expand-file-name
                                      "repeats.org"
                                      org-directory)
                                     ndd/org-agenda-project-agenda-files))))
-          (todo "TODO|HOLD"
+          (todo "TODO"
                 ((org-agenda-overriding-header "Queued")
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))
           (todo "TODO"
@@ -167,7 +167,7 @@
    (org-agenda-refile nil nil t)))
 
 (defun ndd/advance-todo ()
-  (org-todo 'right)
+  (org-todo "NEXT")
   (org-agenda-redo)
   (remove-hook 'org-clock-in-hook #'ndd/advance-todo))
 
