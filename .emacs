@@ -13,7 +13,9 @@
     (when file-name
       (when (or (string-match "\\.org$" file-name)
                 (string-match "\\.md$" file-name))
-        (whitespace-mode -1))
+      (setq-local whitespace-line-column 1000)
+      (setq-local whitespace-style nil)
+      (whitespace-mode 0))
       (when (string-match "\\.py" file-name)
         (setq-local whitespace-line-column 120))
       (when (or (string-match "\\.json" file-name)
@@ -23,9 +25,9 @@
         (setq-local tab-width 2))
       (when (or (string-match "\\.go$" file-name)
                 (string-match "Caddyfile*" file-name))
-        (setq-local indent-tabs-mode t))
-      )))
+        (setq-local indent-tabs-mode t)))))
 (add-hook 'find-file-hook 'ndd/custom-whitespace-mode-hook)
+(add-hook 'markdown-mode-hook 'ndd/custom-whitespace-mode-hook)
 
 ;; packages
 (rc/require
