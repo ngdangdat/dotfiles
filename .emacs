@@ -83,6 +83,12 @@
 (setq doom-modeline-workspace-name t)
 (doom-modeline-mode 1)
 
+;; utilities key binding
+(keymap-set global-map "M-<up>" #'windmove-up)
+(keymap-set global-map "M-<down>" #'windmove-down)
+(keymap-set global-map "M-<left>" #'windmove-left)
+(keymap-set global-map "M-<right>" #'windmove-right)
+
 ;; no littering, emacs
 (eval-and-compile
  (setq auto-save-file-name-transforms
