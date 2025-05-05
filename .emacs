@@ -51,6 +51,8 @@
  ;; programming
  'magit
  'exec-path-from-shell
+ 'yaml-mode
+ 'terraform-mode
  'python-mode
  'go-mode
  'lsp-pyright
@@ -84,10 +86,10 @@
 (doom-modeline-mode 1)
 
 ;; utilities key binding
-(keymap-set global-map "M-<up>" #'windmove-up)
-(keymap-set global-map "M-<down>" #'windmove-down)
-(keymap-set global-map "M-<left>" #'windmove-left)
-(keymap-set global-map "M-<right>" #'windmove-right)
+(keymap-set global-map "C-c <up>" #'windmove-up)
+(keymap-set global-map "C-c <down>" #'windmove-down)
+(keymap-set global-map "C-c <left>" #'windmove-left)
+(keymap-set global-map "C-c <right>" #'windmove-right)
 
 ;; no littering, emacs
 (eval-and-compile

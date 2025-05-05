@@ -13,3 +13,8 @@
 (add-hook 'python-mode-hook #'(lambda()
                                 (require 'lsp-pyright)
                                 (lsp)))
+
+(add-hook 'typescript-mode-hook #'(lambda()
+                                    (lsp)))
+(add-hook 'js2-mode-hook #'(lambda()
+                                    (lsp)))
