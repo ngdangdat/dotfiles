@@ -135,3 +135,5 @@
 ;; load custom file
 (when (file-exists-p custom-file)
   (load-file custom-file))
+;; auto generated (nasty XD)
+(put 'upcase-region 'disabled nil)
