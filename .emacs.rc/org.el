@@ -121,8 +121,8 @@
            (end-of-line 1)
            (setq newhead (org-get-heading)))
          (org-agenda-change-all-lines newhead hdmarker))))
-(defun ndd/org-archive-done-tasks ()
-  "Archive all done tasks."
+(defun ndd/org-archive-done-task ()
+  "Archive all done task"
   (interactive)
   (org-map-entries 'org-archive-subtree "/DONE" 'file)
   (org-map-entries 'org-archive-subtree "/CANCELLED" 'file))
@@ -184,6 +184,7 @@
 
 ;; map keys here
 ;; map: org
+(keymap-set org-mode-map "C-c a" 'ndd/org-archive-done-task)
 (keymap-set global-map "C-c l" 'org-store-link)
 (keymap-set global-map "C-c c" 'org-capture)
 (keymap-set global-map "C-c <tab>" 'ndd/org-agenda)

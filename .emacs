@@ -25,7 +25,8 @@
         (setq-local tab-width 2))
       (when (or (string-match "\\.go$" file-name)
                 (string-match "Caddyfile*" file-name))
-        (setq-local indent-tabs-mode t)))))
+        (setq-local indent-tabs-mode t))))
+  (setq whitespace-line-column 100000000000))
 (add-hook 'find-file-hook 'ndd/custom-whitespace-mode-hook)
 (add-hook 'markdown-mode-hook 'ndd/custom-whitespace-mode-hook)
 
@@ -60,6 +61,7 @@
  'js2-mode
  'lsp-mode
  'lsp-ui
+ 'hl-todo
  )
 
 ;; appearence
@@ -111,6 +113,7 @@
 (keymap-set global-map "C-c C-r" #'ivy-resume)
 (keymap-set global-map "C-c C-f" #'counsel-recentf)
 (keymap-set global-map "C-c f" #'counsel-projectile-rg)
+
 ;; projectile
 (projectile-mode)
 (setq projectile-completion-system 'ivy)
