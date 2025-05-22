@@ -3,10 +3,12 @@
 (add-hook 'org-mode-hook (lambda()
                            (setq-local whitespace-style nil)
                            (whitespace-mode 0)
-                           (org-bullets-mode 1)))
+                           (org-bullets-mode 1)
+                           (org-fold-hide-block-all)))
 
 ;; Configurations
 ;; setup org text file path
+
 (setq org-directory "~/.orgs/gtd/")
 (setq ndd/org-agenda-project-dir (concat org-directory "projects"))
 (setq ndd/org-agenda-project-agenda-files
