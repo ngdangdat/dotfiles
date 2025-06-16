@@ -4,6 +4,7 @@
                            (setq-local whitespace-style nil)
                            (whitespace-mode 0)
                            (org-bullets-mode 1)
+                           (setq org-edit-src-content-indentation 0)
                            (org-fold-hide-block-all)))
 
 ;; Configurations

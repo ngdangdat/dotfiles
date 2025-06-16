@@ -75,10 +75,9 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(load-theme 'leuven-dark)
 (global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-challenger-deep)
 (load-theme doom-theme t)
 (setq doom-modeline-buffer-file-name-style 'truncate-nil)
 (setq doom-modeline-total-line-number t)
@@ -108,11 +107,13 @@
 (setopt ivy-use-virtual-buffers t)
 (setopt ivy-use-selectable-prompt t)
 ;; swiper
+(setopt search-default-mode #'char-fold-to-regexp)
 (keymap-set global-map "C-s" #'swiper-isearch)
 (keymap-set global-map "C-r" #'swiper-isearch-backward)
 (keymap-set global-map "C-c C-r" #'ivy-resume)
 (keymap-set global-map "C-c C-f" #'counsel-recentf)
 (keymap-set global-map "C-c f" #'counsel-projectile-rg)
+(keymap-set global-map "C-x r e" #'replace-regexp)
 
 ;; projectile
 (projectile-mode)
