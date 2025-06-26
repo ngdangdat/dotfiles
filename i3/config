@@ -126,7 +126,7 @@ set $ws10 "10"
 
 # apps started on each ws
 exec --no-startup-id i3-msg "workspace 1:cmd; layout tabbed; exec /usr/local/bin/alacritty"
-exec --no-startup-id sh -c "sleep 1; i3-msg 'workspace 1:cmd; exec /usr/bin/emacs'"
+exec --no-startup-id sh -c "sleep 3; i3-msg 'workspace 1:cmd; exec /usr/bin/emacs'"
 exec --no-startup-id sh -c "sleep 2; i3-msg 'workspace 2:bro; exec /usr/bin/google-chrome-stable'"
 
 # switch to workspace
@@ -189,7 +189,7 @@ mode "resize" {
 bindsym Control+Mod1+q exec --no-startup-id "i3lock"
 bindsym $mod+r mode "resize"
 bindsym $mod+d exec --no-startup-id "rofi -show run"
-bindsym Control+Shift+4 exec --no-startup-id "flameshot gui" 
+bindsym Control+Shift+4 exec --no-startup-id "flameshot gui"
 
 # class                 border  bground text    indicator child_border
 client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
