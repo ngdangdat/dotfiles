@@ -37,6 +37,7 @@
  'swiper
  'counsel
  'projectile
+ 'counsel-projectile
  'company
  'company-posframe
  ;; organize files

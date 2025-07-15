@@ -7,3 +7,4 @@ symlink|.emacs.local|
 symlink|i3|.config
 symlink|i3status|.config
 symlink|.tmux.conf|
+symlink|.claude|
