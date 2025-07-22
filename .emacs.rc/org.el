@@ -57,10 +57,11 @@
 ;;customize org-agenda appearance
 (setq org-agenda-custom-commands
       '((" " "Agenda"
-         ((alltodo ""
-                   ((org-agenda-overriding-header "Inbox")
+         (
+          (alltodo ""
+                   ((org-agenda-overriding-header "Plan")
                     (org-agenda-files `(,(expand-file-name
-                                          "inbox.org"
+                                          "plan.org"
                                           org-directory)))))
           (agenda ""
                   ((org-agenda-span 'day)
@@ -206,10 +207,16 @@
                                      "repeats.org"
                                      org-directory))
          ,(concat "* TODO %?\n"
-                  "/Entered on/ %U"))))
+                  "/Entered on/ %U"))
+         ("p" "Plan the day" entry (file, (expand-file-name
+                                           "plan.org"
+                                           org-directory))
+          ,(concat "* TODO Plan %(format-time-string \"%Y-%m-%d\")\n"
+                   "/Entered on/ %U\n"
+                   "%?"))))
 
 
-;; org-roam
+;; Org-roam
 (setq org-roam-directory "~/.orgs/roam/")
 ;; org-roam: key map
 (org-roam-db-autosync-mode)
