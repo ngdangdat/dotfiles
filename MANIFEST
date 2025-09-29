@@ -6,3 +6,4 @@ symlink|i3|.config
 symlink|i3status|.config
 symlink|.tmux.conf|
 symlink|.alacritty.toml|
+symlink|.zshcustoms|

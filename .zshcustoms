@@ -1,0 +1,1 @@
+alias dstopall="docker ps | tail -n +2 | cut -f1 -d' ' | xargs -I{} docker stop {}"
