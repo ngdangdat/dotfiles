@@ -14,8 +14,8 @@ symlinkFile() {
     fi
 
     if [ -e "$dst" ]; then
-        echo "[ERROR] not-symlink file exists at the symlink target: $dst"
-        exit 1
+        echo "[ERROR] not-symlink file exists at the symlink target: $dst. Skip."
+        return
     fi
     ln -s $src $dst
     echo "[INFO] linked: $src -> $dst"
