@@ -7,3 +7,4 @@ symlink|i3status|.config
 symlink|.tmux.conf|
 symlink|.alacritty.toml|
 symlink|.zshcustoms|
+symlink|.claude/commands|
