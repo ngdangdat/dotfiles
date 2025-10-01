@@ -2,11 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="darkblood"
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-source $HOME/.zshcustoms
-
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting aws pyenv)
 
 # Nix
 . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
@@ -15,9 +11,12 @@ source $HOME/.zshcustoms
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
-export WORKON="$HOME/pyenvs"
+export WORKON_HOME="$HOME/pyenvs"
 eval "$(pyenv virtualenv-init -)"
 pyenv virtualenvwrapper
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/.zshcustoms
 
 
 # NVM
