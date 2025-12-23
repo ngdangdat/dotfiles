@@ -8,3 +8,4 @@ symlink|.tmux.conf|
 symlink|.alacritty.toml|
 symlink|.zshcustoms|
 symlink|.claude/commands|
+symlink|.oh-my-zsh/custom/themes|
