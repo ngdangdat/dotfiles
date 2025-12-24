@@ -245,7 +245,7 @@ prompt_dir() {
 prompt_newline() {
   echo -n "\n"
   CURRENT_BG='NONE'
-  prompt_segment 1 15 "pwn3d 4cc0unt: $USER@$HOST"
+  prompt_segment 1 15 "h4cked: $USER"
 }
 
 # Virtualenv: current working virtualenv
@@ -260,7 +260,7 @@ prompt_virtualenv() {
 prompt_aws() {
   [[ -z "$AWS_PROFILE" && -z "$AWS_DEFAULT_PROFILE" ]] && return
   local aws_profile="${AWS_PROFILE:-$AWS_DEFAULT_PROFILE}"
-  prompt_segment 208 0 "hacked aws profile: $aws_profile"
+  prompt_segment 208 0 "AMZ $aws_profile"
 }
 
 # Status:
