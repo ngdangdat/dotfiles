@@ -55,7 +55,6 @@
                           "DONE(d)"
                           "CANCELLED(c)")))
 ;;customize org-agenda appearance
-
 (setq org-agenda-custom-commands
       '((" " "Agenda"
          (
@@ -73,7 +72,12 @@
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))
           (todo "TODO"
                 ((org-agenda-overriding-header "Queued")
-                 (org-agenda-files ndd/org-agenda-project-agenda-files)))
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+          (todo "TODO"
+                ((org-agenda-overriding-header "Scheduled")
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)
+                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'notscheduled))))
           )
          )))
 
