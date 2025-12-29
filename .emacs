@@ -26,7 +26,7 @@
       (when (or (string-match "\\.go$" file-name)
                 (string-match "Caddyfile*" file-name))
         (setq-local indent-tabs-mode t))))
-  (setq whitespace-line-column 100000000000))
+  (setq whitespace-line-column nil))
 (add-hook 'find-file-hook 'ndd/custom-whitespace-mode-hook)
 (add-hook 'markdown-mode-hook 'ndd/custom-whitespace-mode-hook)
 
