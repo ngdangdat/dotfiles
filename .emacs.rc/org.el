@@ -55,34 +55,27 @@
                           "DONE(d)"
                           "CANCELLED(c)")))
 ;;customize org-agenda appearance
+
 (setq org-agenda-custom-commands
       '((" " "Agenda"
          (
           (alltodo ""
-                   ((org-agenda-overriding-header "Plan")
+                   ((org-agenda-overriding-header "INBOX")
                     (org-agenda-files `(,(expand-file-name
-                                          "plan.org"
+                                          "inbox.org"
                                           org-directory)))))
           (agenda ""
-                  ((org-agenda-span 'day)
+                  ((org-agenda-span 'week)
                    (org-agenda-start-day nil)
                    (org-deadline-warning-days 365)))
           (todo "NEXT|HOLD"
                 ((org-agenda-overriding-header "In Progress")
-                 (org-agenda-files (cons
-                                    (expand-file-name
-                                     "repeats.org"
-                                     org-directory)
-                                    ndd/org-agenda-project-agenda-files))))
+                 (org-agenda-files ndd/org-agenda-project-agenda-files)))
           (todo "TODO"
                 ((org-agenda-overriding-header "Queued")
                  (org-agenda-files ndd/org-agenda-project-agenda-files)))
-          (todo "TODO"
-                ((org-agenda-overriding-header "Repeats")
-                 (org-agenda-files `(,(
-                                       expand-file-name
-                                       "repeats.org"
-                                       org-directory)))))))))
+          )
+         )))
 
 ;; functions
 (defun ndd/org-agenda-clock-keymap ()
@@ -138,8 +131,7 @@
   (interactive)
   (org-agenda-bulk-mark-regexp ":INBOX:")
   (ndd/bulk-process-entries)
-  (org-save-all-org-buffers)
-  )
+  (org-save-all-org-buffers))
 
 (defun ndd/bulk-process-entries ()
   (if (not (null org-agenda-bulk-marked-entries))
@@ -202,18 +194,7 @@
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "~/.orgs/gtd/inbox.org")
          ,(concat "* TODO %?\n"
-                  "/Entered on/ %U"))
-         ("r" "Repeat" entry (file ,(expand-file-name
-                                     "repeats.org"
-                                     org-directory))
-         ,(concat "* TODO %?\n"
-                  "/Entered on/ %U"))
-         ("p" "Plan the day" entry (file, (expand-file-name
-                                           "plan.org"
-                                           org-directory))
-          ,(concat "* TODO Plan %(format-time-string \"%Y-%m-%d\")\n"
-                   "/Entered on/ %U\n"
-                   "%?"))))
+                  "/Entered on/ %U"))))
 
 
 ;; Org-roam
