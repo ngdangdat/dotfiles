@@ -9,3 +9,9 @@ decorations = 'None'
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
 key = "F11"
+
+[[keyboard.bindings]]
+chars = "\n"
+key = "Return"
+mods = "Shift"
+
