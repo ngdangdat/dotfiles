@@ -1,0 +1,9 @@
+{
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/home/ngdangdat/.claude/statusline.sh"
+  }
+}
