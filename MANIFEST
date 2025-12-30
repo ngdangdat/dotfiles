@@ -10,4 +10,5 @@ symlink|.zshcustoms|
 symlink|.claude/commands|
 symlink|.claude/settings.json|
 symlink|.claude/statusline.sh|
+symlink|.claude/CLAUDE.md|
 symlink|.oh-my-zsh/custom/themes|
