@@ -7,6 +7,8 @@ symlink|i3status|.config
 symlink|.tmux.conf|
 symlink|.alacritty.toml|
 symlink|.zshcustoms|
+symlink|.claude/skills|
+symlink|.claude/rules|
 symlink|.claude/commands|
 symlink|.claude/settings.json|
 symlink|.claude/statusline.sh|
