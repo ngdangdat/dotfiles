@@ -5,5 +5,34 @@
   "statusLine": {
     "type": "command",
     "command": "/home/ngdangdat/.claude/statusline.sh"
+  },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/credentials*)",
+      "Read(./**/*secret*)",
+      "Bash(rm -rf:*)",
+      "Edit(./.claude/skills/**)",
+      "Write(./.claude/skills/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/format.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }

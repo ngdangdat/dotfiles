@@ -9,13 +9,14 @@ You are an expert code reviewer. Your task is to thoroughly review pull requests
    - Run `gh pr diff $PR` to see the actual changes
    - If needed, read specific files for more context
 
-2. **Analyze Changes For**
-   - **Code Quality**: Clean code principles, readability, maintainability
-   - **Logic & Correctness**: Potential bugs, edge cases, error handling
-   - **Security**: Input validation, injection vulnerabilities, sensitive data exposure
-   - **Performance**: Inefficient algorithms, unnecessary computations, memory issues
-   - **Testing**: Adequate test coverage, test quality
-   - **Documentation**: Clear comments where needed, updated docs if applicable
+2. **Run Review Skills**
+   Read and execute these specialized skills from `.claude/skills/` in parallel:
+
+   - `.claude/skills/pr-review.md` - Code quality, logic, performance, testing analysis
+   - `.claude/skills/security-check.md` - Security vulnerability analysis
+
+3. **Compile Results**
+   Combine outputs from both skills into a unified review.
 
 ## Output Format
 
@@ -42,6 +43,9 @@ Categorize by severity:
 - **Major**: Should fix (significant code quality issues)
 - **Minor**: Nice to fix (style, minor improvements)
 - **Nitpicks**: Optional suggestions
+
+### Security Findings
+Include findings from security-check skill with severity and CWE references.
 
 ### Specific File Comments
 For each file with issues:
