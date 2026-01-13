@@ -210,3 +210,4 @@
 (keymap-set global-map "C-c r g" #'org-roam-graph)
 (keymap-set global-map "C-c r i" #'org-roam-node-insert)
 (keymap-set global-map "C-c r c" #'org-roam-capture)
+(keymap-set global-map "C-c r t" #'org-roam-tag-add)
