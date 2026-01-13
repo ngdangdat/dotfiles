@@ -245,7 +245,7 @@ prompt_dir() {
 prompt_newline() {
   echo -n "\n"
   CURRENT_BG='NONE'
-  prompt_segment 1 15 "h4cked: $USER"
+  prompt_segment 1 15 "u:$USER@c:$HOST"
 }
 
 # Virtualenv: current working virtualenv
