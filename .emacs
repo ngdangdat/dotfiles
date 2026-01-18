@@ -66,7 +66,7 @@
  )
 
 ;; appearence
-(add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-16"))
+(add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
 (setq inhibit-startup-screen 1)
 (setq display-line-numbers-type 'relative)
 (setq whitespace-line-column 80)

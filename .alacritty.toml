@@ -1,6 +1,6 @@
 [font]
-size = 12.0
-normal = { family = "Ubuntu Mono Nerd Font", style = "Regular" }
+size = 14.0
+normal = { family = "UbuntuMonoNerdFont", style = "Regular" }
 
 [window]
 opacity = 0.85
