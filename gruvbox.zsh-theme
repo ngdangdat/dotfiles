@@ -259,10 +259,8 @@ _hash_to_color() {
 prompt_newline() {
   echo -n "\n"
   CURRENT_BG='NONE'
-  local user_color=$(_hash_to_color "$USER")
-  local host_color=$(_hash_to_color "$HOST")
-  prompt_segment $user_color 15 "u:$USER"
-  prompt_segment $host_color 15 "c:$HOST"
+  local color=$(_hash_to_color "$USER@$HOST")
+  prompt_segment $color 15 "$USER@$HOST"
 }
 
 # Virtualenv: current working virtualenv
