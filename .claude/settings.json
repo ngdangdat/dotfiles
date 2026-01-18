@@ -22,12 +22,7 @@
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/format.sh"
-          }
-        ]
+        "hooks": []
       }
     ]
   },

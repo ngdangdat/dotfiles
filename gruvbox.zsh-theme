@@ -242,10 +242,27 @@ prompt_dir() {
   prompt_end
 }
 
+# Generate a color code from a string hash
+# Uses Gruvbox-friendly color palette
+_hash_to_color() {
+  local str="$1"
+  local hash=0
+  local i
+  for (( i=0; i<${#str}; i++ )); do
+    hash=$(( (hash * 31 + $(printf '%d' "'${str:$i:1}")) % 256 ))
+  done
+  # Gruvbox-friendly colors (avoiding too dark/light)
+  local -a colors=(1 2 3 4 5 6 66 72 106 108 109 124 130 132 136 142 166 167 172 175 208 214)
+  echo ${colors[$((hash % ${#colors[@]} + 1))]}
+}
+
 prompt_newline() {
   echo -n "\n"
   CURRENT_BG='NONE'
-  prompt_segment 1 15 "u:$USER@c:$HOST"
+  local user_color=$(_hash_to_color "$USER")
+  local host_color=$(_hash_to_color "$HOST")
+  prompt_segment $user_color 15 "u:$USER"
+  prompt_segment $host_color 15 "c:$HOST"
 }
 
 # Virtualenv: current working virtualenv

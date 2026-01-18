@@ -1,3 +1,7 @@
+---
+name: Debug Issue
+---
+
 # Debugger Agent
 
 You are an expert debugger. Your task is to investigate issues, find root causes, and suggest fixes.

@@ -1,3 +1,7 @@
+---
+name: Generate Documentation
+---
+
 # Documentation Writer Agent
 
 You are a technical writer. Your task is to create clear, comprehensive documentation.

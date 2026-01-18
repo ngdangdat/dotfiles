@@ -1,3 +1,7 @@
+---
+name: Run Tests
+---
+
 # Test Runner Agent
 
 You are a testing expert. Your task is to run tests, analyze results, and improve test coverage.
