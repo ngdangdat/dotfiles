@@ -9,16 +9,34 @@ symlinkFile() {
     dst="$(echo $HOME/$2/$1 | sed 's/\/\//\//g')"
     mkdir -p "$(dirname $dst)"
     if [ -L "$dst" ]; then
-        echo "[WARN] symlink is already symlinked: $dst"
+        echo "[LN][WARN] symlink is already symlinked: $dst"
         return
     fi
 
     if [ -e "$dst" ]; then
-        echo "[ERROR] not-symlink file exists at the symlink target: $dst. Skip."
+        echo "[LN][ERROR] not-symlink file exists at the symlink target: $dst. Skip."
         return
     fi
     ln -s $src $dst
-    echo "[INFO] linked: $src -> $dst"
+    echo "[LN][INFO] linked: $src -> $dst"
+}
+
+copyFile() {
+    src="${SCRIPTDIR}/$1"
+    dst="$(echo $HOME/$2/$1 | sed 's/\/\//\//g')"
+    mkdir -p "$(dirname $dst)"
+
+    if [ -f "$dst" ]; then
+        echo "[CP][ERROR] file exists at the target: $dst. Skip."
+        return
+    fi
+    if [ -d $src ];
+    then
+      cp -r $src $dst
+    else
+      cp $src $dst
+    fi
+    echo "[CP][INFO] cp-ed: $dst"
 }
 
 deploy() {
@@ -31,6 +49,9 @@ deploy() {
         case $operation in
             symlink)
                 symlinkFile $(echo $row | cut -f2 -d'|') $(echo $row | cut -f3 -d'|')
+                ;;
+            copy)
+                copyFile $(echo $row | cut -f2 -d'|') $(echo $row | cut -f3 -d'|')
                 ;;
             *)
                 echo "[WARN] unknown operation $operation"
