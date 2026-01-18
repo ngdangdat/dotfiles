@@ -252,7 +252,15 @@ _hash_to_color() {
     hash=$(( (hash * 31 + $(printf '%d' "'${str:$i:1}")) % 256 ))
   done
   # Gruvbox-friendly colors (avoiding too dark/light)
-  local -a colors=(1 2 3 4 5 6 66 72 106 108 109 124 130 132 136 142 166 167 172 175 208 214)
+  local -a colors=(
+    1 2 3 4 5 6                    # basic colors
+    65 66 72 73                    # teals/cyans
+    88 96 100 106 107 108 109      # purples/olives/greens
+    124 130 131 132 136 137 138    # reds/oranges/browns
+    139 142 143 144                # light purples/limes/tans
+    166 167 168 172 173 174 175    # magentas/salmons
+    179 180 208 214 223            # golds/oranges/creams
+  )
   echo ${colors[$((hash % ${#colors[@]} + 1))]}
 }
 
