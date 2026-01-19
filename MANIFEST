@@ -5,7 +5,7 @@ symlink|.emacs.local|
 copy|i3|.config
 copy|i3status|.config
 symlink|.tmux.conf|
-symlink|.alacritty.toml|
+copy|alacritty.toml|.config/alacritty
 symlink|.zshcustoms|
 symlink|.claude/skills|
 symlink|.claude/rules|
