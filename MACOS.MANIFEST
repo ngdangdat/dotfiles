@@ -1,0 +1,14 @@
+#operation|argument_1|argument_2
+symlink|.emacs.rc|
+symlink|.emacs|
+symlink|.emacs.local|
+symlink|.tmux.conf|
+symlink|.alacritty.toml|
+symlink|.zshcustoms|
+symlink|.claude/skills|
+symlink|.claude/rules|
+symlink|.claude/commands|
+symlink|.claude/settings.json|
+symlink|.claude/statusline.sh|
+symlink|.claude/CLAUDE.md|
+symlink|gruvbox.zsh-theme|.oh-my-zsh/custom/themes
