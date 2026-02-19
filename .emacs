@@ -1,4 +1,4 @@
-;;; .emacs -*- lexical-binding: t; -*-
+;;; .Emacs -*- lexical-binding: t; -*-
 (setq custom-file "~/.emacs.custom.el")
 (package-initialize)
 ;; custom require, install packages if it's not installed and refresh once only
@@ -66,7 +66,7 @@
  )
 
 ;; appearence
-(add-to-list 'default-frame-alist `(font . "JetBrainsMono Nerd Font-14"))
+(add-to-list 'default-frame-alist `(font . "0xProto Nerd Font-16"))
 (setq inhibit-startup-screen 1)
 (setq display-line-numbers-type 'relative)
 (setq whitespace-line-column 80)

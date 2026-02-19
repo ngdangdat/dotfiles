@@ -1,10 +1,7 @@
 {
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "/home/ngdangdat/.claude/statusline.sh"
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
   "permissions": {
     "deny": [
@@ -26,8 +23,12 @@
       }
     ]
   },
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
+  "statusLine": {
+    "type": "command",
+    "command": "$HOME/.claude/statusline.sh"
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true
 }

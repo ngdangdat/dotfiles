@@ -3,7 +3,7 @@ symlink|.emacs.rc|
 symlink|.emacs|
 symlink|.emacs.local|
 symlink|.tmux.conf|
-symlink|.alacritty.toml|
+copy|alacritty.toml|.config/alacritty
 symlink|.zshcustoms|
 symlink|.claude/skills|
 symlink|.claude/rules|
