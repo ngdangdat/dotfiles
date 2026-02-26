@@ -7,7 +7,7 @@ input=$(cat)
 # Helper functions for common extractions
 # Ref: https://code.claude.com/docs/en/statusline
 get_model_id() { echo "$input" | jq -r '.model.id'; }
-get_current_dir() { echo "$input" | jq -r '.workspace.current_dir'; }
+get_current_dir() { echo "$input" | jq -r '.workspace.current_dir | split("/") | last'; }
 get_project_dir() { echo "$input" | jq -r '.workspace.project_dir'; }
 get_version() { echo "$input" | jq -r '.version'; }
 get_cost() { echo "$input" | jq -r '.cost.total_cost_usd'; }
