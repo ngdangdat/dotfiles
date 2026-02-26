@@ -28,4 +28,5 @@ fi
 
 
 # echo M:$(get_model_id)
-echo "GIT>${GIT_BRANCH} | DIR>$(get_current_dir) | MOD>$(get_model_id) | CTX>$(get_input_tokens) in $(get_output_tokens) out | LST>$(get_cu_input_tokens) in $(get_cu_output_tokens) out"
+echo "DIR>$(get_current_dir) | MOD>$(get_model_id) | CTX>$(get_input_tokens) in $(get_output_tokens) out | LST>$(get_cu_input_tokens) in $(get_cu_output_tokens) out"
+echo "GIT>${GIT_BRANCH}"
