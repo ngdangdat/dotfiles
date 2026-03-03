@@ -79,7 +79,7 @@
 (setq whitespace-style '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark missing-newline-at-eof))
 (global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
-(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme 'doom-tokyo-night)
 (load-theme doom-theme t)
 (setq doom-modeline-buffer-file-name-style 'truncate-nil)
 (setq doom-modeline-total-line-number t)
