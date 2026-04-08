@@ -17,6 +17,8 @@ get_output_tokens() { echo "$input" | jq -r '.context_window.total_output_tokens
 get_cu_input_tokens() { echo "$input" | jq -r '.context_window.current_usage.input_tokens // 0'; }
 get_cu_output_tokens() { echo "$input" | jq -r '.context_window.current_usage.output_tokens // 0'; }
 get_context_window_size() { echo "$input" | jq -r '.context_window.context_window_size'; }
+get_used_percentage() { echo "$input" | jq -r '.context_window.used_percentage // empty'; }
+get_remaining_percentage() { echo "$input" | jq -r '.context_window.remaining_percentage // empty'; }
 
 GIT_BRANCH="NOPE"
 if git rev-parse --git-dir > /dev/null 2>&1; then
@@ -28,5 +30,14 @@ fi
 
 
 # echo M:$(get_model_id)
-echo "DIR>$(get_current_dir) | MOD>$(get_model_id) | CTX>$(get_input_tokens) in $(get_output_tokens) out | LST>$(get_cu_input_tokens) in $(get_cu_output_tokens) out"
+USED_PCT=$(get_used_percentage)
+CTX_USAGE=""
+if [ -n "$USED_PCT" ]; then
+    REMAINING_PCT=$(get_remaining_percentage)
+    WIN_SIZE=$(get_context_window_size)
+    USED_TOKENS=$(echo "$input" | jq -r '.context_window.used_tokens // 0')
+    CTX_USAGE=" | WIN>${USED_TOKENS}/${WIN_SIZE} ($(printf '%.0f' "$USED_PCT")%)"
+fi
+
+echo "DIR>$(get_current_dir) | MOD>$(get_model_id) | CTX>$(get_input_tokens) in $(get_output_tokens) out | LST>$(get_cu_input_tokens) in $(get_cu_output_tokens) out${CTX_USAGE}"
 echo "GIT>${GIT_BRANCH}"
