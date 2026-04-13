@@ -1,4 +1,4 @@
-r;;; .org.el -*- lexical-binding: t; -*-
+;;; .org.el -*- lexical-binding: t; -*-
 (add-to-list 'org-modules 'org-habit)
 (add-hook 'org-mode-hook (lambda()
                            (setq-local whitespace-style nil)
