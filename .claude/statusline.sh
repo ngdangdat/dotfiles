@@ -29,14 +29,31 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
 fi
 
 
-# echo M:$(get_model_id)
+humanize_size() {
+    awk -v n="$1" 'BEGIN {
+        if (n >= 1000000) { v = n / 1000000; printf (v == int(v) ? "%dM" : "%.1fM"), v }
+        else if (n >= 1000) { v = n / 1000; printf (v == int(v) ? "%dK" : "%.1fK"), v }
+        else { printf "%d", n }
+    }'
+}
+
+make_bar() {
+    awk -v p="$1" 'BEGIN {
+        filled = int(p / 10 + 0.5)
+        if (filled > 10) filled = 10
+        if (filled < 0) filled = 0
+        for (i = 0; i < filled; i++) printf "▓"
+        for (i = filled; i < 10; i++) printf "░"
+    }'
+}
+
 USED_PCT=$(get_used_percentage)
 CTX_USAGE=""
 if [ -n "$USED_PCT" ]; then
-    REMAINING_PCT=$(get_remaining_percentage)
     WIN_SIZE=$(get_context_window_size)
-    USED_TOKENS=$(echo "$input" | jq -r '.context_window.used_tokens // 0')
-    CTX_USAGE=" | WIN>${USED_TOKENS}/${WIN_SIZE} ($(printf '%.0f' "$USED_PCT")%)"
+    BAR=$(make_bar "$USED_PCT")
+    HUMAN_SIZE=$(humanize_size "$WIN_SIZE")
+    CTX_USAGE=" | WIN>${BAR} $(printf '%.0f' "$USED_PCT")% of ${HUMAN_SIZE}"
 fi
 
 echo "DIR>$(get_current_dir) | MOD>$(get_model_id) | CTX>$(get_input_tokens) in $(get_output_tokens) out | LST>$(get_cu_input_tokens) in $(get_cu_output_tokens) out${CTX_USAGE}"
