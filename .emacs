@@ -50,6 +50,7 @@
  'org-clock-convenience
  'org-roam
  'org-bullets
+ 'ox-hugo
  ;; programming
  'magit
  'exec-path-from-shell
