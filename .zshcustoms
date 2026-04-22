@@ -6,3 +6,35 @@ alias lg="lazygit"
 function alacolor() {
   alacritty msg config "colors.primary.background='#${1}'"
 }
+
+function cmc() {
+  local key_file="${HOME}/.config/cmc/api_key"
+  if [[ ! -r "${key_file}" ]]; then
+    print -u2 "cmc: API key file not found or unreadable: ${key_file}"
+    return 1
+  fi
+
+  local api_key
+  api_key="$(tr -d '[:space:]' < "${key_file}")"
+  if [[ -z "${api_key}" ]]; then
+    print -u2 "cmc: API key file is empty: ${key_file}"
+    return 1
+  fi
+
+  local response
+  response="$(curl -sSf --max-time 10 \
+    -H 'Accept: application/json' \
+    -H "X-CMC_PRO_API_KEY: ${api_key}" \
+    'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC')" || {
+    print -u2 "cmc: request to CoinMarketCap failed"
+    return 1
+  }
+
+  local price
+  price="$(jq -er '.data.BTC[0].quote.USD.price' <<< "${response}")" || {
+    print -u2 "cmc: could not parse price from response"
+    return 1
+  }
+
+  print -r -- "${price}"
+}
