@@ -10,9 +10,7 @@
       "Read(./secrets/**)",
       "Read(./**/credentials*)",
       "Read(./**/*secret*)",
-      "Bash(rm -rf:*)",
-      "Edit(./.claude/skills/**)",
-      "Write(./.claude/skills/**)"
+      "Bash(rm -rf:*)"
     ]
   },
   "hooks": {
@@ -32,5 +30,5 @@
     "compound-engineering@every-marketplace": true
   },
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "effortLevel": "medium"
 }
