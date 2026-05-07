@@ -10,6 +10,10 @@ alias gw="git worktree"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
+function loadenv() {
+  eval $(cat ${1})
+}
+
 function alacolor() {
   alacritty msg config "colors.primary.background='#${1}'"
 }
