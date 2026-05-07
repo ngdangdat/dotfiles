@@ -14,10 +14,37 @@
     ]
   },
   "hooks": {
-    "PostToolUse": [
+    "PermissionRequest": [
       {
-        "matcher": "Write|Edit",
-        "hooks": []
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/notify.sh \"🔔 Claude Code\" \"Claude needs your input\""
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/notify.sh \"🔔 Claude Code\" \"Claude needs your attention\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/notify.sh \"✅ Claude Code\" \"Task completed\""
+          }
+        ]
       }
     ]
   },
