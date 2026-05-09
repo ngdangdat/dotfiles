@@ -12,5 +12,6 @@ symlink|.claude/rules|
 symlink|.claude/commands|
 symlink|.claude/settings.json|
 symlink|.claude/statusline.sh|
+symlink|.claude/notify.sh|
 symlink|.claude/CLAUDE.md|
 symlink|gruvbox.zsh-theme|.oh-my-zsh/custom/themes
