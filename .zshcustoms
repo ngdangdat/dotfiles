@@ -11,7 +11,7 @@ alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
 function loadenv() {
-  eval $(cat ${1})
+  export $(grep -v '^#' ${1} | xargs)
 }
 
 function alacolor() {
