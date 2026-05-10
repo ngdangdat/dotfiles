@@ -30,6 +30,6 @@ case "$(uname -s)" in
     terminal-notifier -title "$TITLE" -message "$MESSAGE" -activate "$APP"
     ;;
   Linux)
-    notify-send -a "Claude Code" "$TITLE" "$MESSAGE"
+    notify-send -a "Claude Code" "$TITLE" "$MESSAGE" 2>/dev/null || true
     ;;
 esac
