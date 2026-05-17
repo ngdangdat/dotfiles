@@ -4,7 +4,10 @@ MESSAGE="$2"
 
 case "$(uname -s)" in
   Darwin)
-    if [ "$TERM_PROGRAM" = "vscode" ]; then
+    # macOS exports the frontmost app's bundle id; survives tmux/ssh
+    if [ -n "$__CFBundleIdentifier" ]; then
+      APP="$__CFBundleIdentifier"
+    elif [ "$TERM_PROGRAM" = "vscode" ]; then
       APP="com.microsoft.VSCode"
     elif [ "$TERM_PROGRAM" = "WezTerm" ]; then
       APP="com.github.wez.wezterm"
