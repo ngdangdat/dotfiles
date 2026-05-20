@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash $HOME/.claude/notify.sh \"🔔 Claude Code\" \"Claude needs your input\""
+            "command": "bash $HOME/.claude/notify.sh"
           }
         ]
       }
@@ -31,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash $HOME/.claude/notify.sh \"🔔 Claude Code\" \"Claude needs your attention\""
+            "command": "bash $HOME/.claude/notify.sh"
           }
         ]
       }
@@ -42,7 +42,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash $HOME/.claude/notify.sh \"✅ Claude Code\" \"Task completed\""
+            "command": "bash $HOME/.claude/notify.sh"
           }
         ]
       }
