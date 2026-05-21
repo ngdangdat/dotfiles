@@ -1,4 +1,10 @@
 {
+  "mcpServers": {
+    "wiki_search": {
+      "command": "qmd",
+      "args": ["mcp"]
+    }
+  },
   "attribution": {
     "commit": "",
     "pr": ""
