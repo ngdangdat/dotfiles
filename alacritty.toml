@@ -14,7 +14,7 @@ action = "ToggleFullscreen"
 key = "F11"
 
 [[keyboard.bindings]]
-chars = "\n"
+chars = "\u001b[13;2u"
 key = "Return"
 mods = "Shift"
 
