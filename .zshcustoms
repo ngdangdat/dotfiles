@@ -9,7 +9,7 @@ alias cldy="claude --dangerously-skip-permissions"
 alias gw="git worktree"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
-alias gwca="git worktree list | cut -f1 -d' ' | xargs -I{} git worktree remove $* {}"
+alias gwca="git worktree list | grep -v '\[main\]' | cut -f1 -d' ' | xargs -I{} git worktree remove $* {}"
 
 function loadenv() {
   export $(grep -v '^#' ${1} | xargs)
